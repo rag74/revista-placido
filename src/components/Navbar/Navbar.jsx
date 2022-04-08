@@ -38,7 +38,7 @@ function Navbar() {
                     <li>Periodismo</li>
                     <li>Podcast</li>
                     <li>Audiolibro</li>
-                    <li>Que es Altavos</li>
+                    <li>Que es AltoBondi</li>
                 </ul>
             </nav>
 
