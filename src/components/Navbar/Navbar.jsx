@@ -22,7 +22,7 @@ function Navbar() {
     return(
         <header>
             <div className='marca'>
-            <span>📢</span><h1>ALTAVOZ</h1>
+            <span>📢</span><h1>altoBONDI</h1>
             </div>
 
             <div className="burger" onClick={handleClick}>
