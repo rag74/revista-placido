@@ -1,12 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
+import ArticleListContainer from './components/ArticleListContainer/ArticleListContainer';
+
+import Router from './pages/Router.jsx'
 
 function App() {
   return (
     <>
-      <Navbar />
+      <Router>
+        <Navbar />
+        <ArticleListContainer />
+      </Router>
     </>
   );
 }
