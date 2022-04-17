@@ -16,7 +16,7 @@
 
 @media (min-width: 1024px) {
   .contenedor {
-    max-width: 1200px;
+    width: 95%;
     margin: auto;
   }
 }

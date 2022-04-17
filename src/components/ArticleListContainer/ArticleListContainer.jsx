@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./ArticleListContainer.css";
+import ArticleList from '../ArticleList/ArticleList';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
 
@@ -35,7 +36,7 @@ function ArticleListContainer() {
               querySnapshot.forEach((item) => {
                   arr.push(item.data())
                   });
-                  
+                  arr.sort((a,b) => b.fecha - a.fecha);
                   setArticulos(arr);
                   setLoading(false);
           }}
@@ -44,12 +45,26 @@ function ArticleListContainer() {
       
   }, [categoria]);
   
+
   console.log(articulos);
 
     return (
-
-        <div className="container"></div>
-
+        <main>
+  
+        <div>
+            {categoria!=null ?
+                <h1 className="tituloseccion"> {categoria.toLowerCase()} </h1> 
+                : 
+                ""};
+                
+            <div className="listadoArticulos"> 
+                {<ArticleList articulos={articulos}
+                        loading={loading}
+                />}
+            </div>
+        </div>
+      
+      </main>
     )
 
 }

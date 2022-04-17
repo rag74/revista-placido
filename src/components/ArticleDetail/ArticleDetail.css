@@ -1,0 +1,320 @@
+.cabeceraArticulo {
+    max-width: 1200px;
+    margin:auto;
+    text-align: center;
+    padding: 0 10px 0 10px;
+}
+
+.divisor {
+    width: 15%;
+    text-align: center;
+    margin:auto;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    border-top: 3px solid rgb(180 128 228);
+}
+
+.mainCategory {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+    background-color: rgb(180, 128, 228);
+    display: inline-block;
+    margin: 20px 0 20px;
+}
+
+.volanta {
+    /*text-transform: uppercase;*/
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 25px;
+}
+
+.title {
+    font-family: 'Anton', sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    margin: 0 0 25px;
+}
+
+.bajada {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        margin: 0 0 25px;
+        line-height: 1.3;
+}
+
+.autores {
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+span.autor {
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+span.por{
+    color:blueviolet;
+    font-weight: bold;
+}
+
+
+.imagenArticulo img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.textoArticulo {
+    max-width: 800px;
+    margin:auto;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    
+    padding: 0 10px 0 10px;
+}
+
+.textoArticulo p {
+    margin: 0 0 25px;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.finalArt {
+    font-size: 16px;
+    padding: 0 10px 0 10px;
+}
+
+.cierre {
+        max-width: 800px;
+        text-align: center;
+        margin:auto;
+
+        border-top: 2px solid rgb(180 128 228);
+
+}
+
+.fechaArt {
+    font-family: 'Raleway', sans-serif;
+    max-width: 800px;
+    margin:auto;
+    text-align: right;
+    padding: 5px;
+    color:blueviolet;
+    font-weight: bold;
+}
+.catLink {
+    font-family: 'Raleway', sans-serif;
+    display: inline-block;
+    padding: 5px;
+    color:blueviolet;
+    font-weight: bold;
+    cursor: pointer;
+    margin: auto;
+    cursor: pointer;
+    text-align: right;
+}
+
+
+.catLink a {
+    color:blueviolet;
+}
+
+.catcontainer {
+    max-width: 800px;
+    margin:auto;
+    text-align: right;
+}
+
+
+
+
+/*///////////////////////////////////
+//////PANTALLA  /////////////
+////////////////////////////////////
+ */
+ @media (min-width: 800px) {
+    .mainCategory {
+        font-size: 14px;
+    }
+
+    .volanta {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0 0 25px;
+    }
+
+    .title {
+ 
+        font-size: 5rem;
+ 
+    }
+
+    .bajada {
+        font-size: 18px;
+    }
+
+    .autores {
+        font-size: 18px;
+
+    }
+
+    .textoArticulo p {
+        font-size: 16px;
+    }
+
+    .finalArt {
+        font-size: 20px;
+    }
+ }
+
+
+/*///////////////////////////////////
+//////PANTALLA DESKTOP /////////////
+////////////////////////////////////
+ */
+ @media (min-width: 1024px) {
+
+    .cabeceraArticulo {
+        max-width: 1200px;
+        margin:auto;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .divisor {
+        width: 15%;
+        text-align: center;
+        margin:auto;
+        margin-bottom: 40px;
+        margin-top: 30px;
+        border-top: 3px solid rgb(180 128 228);
+    }
+    
+    .mainCategory {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        padding: 5px;
+        background-color: rgb(180, 128, 228);
+        display: inline-block;
+        margin: 20px 0 20px;
+    }
+    
+    .volanta {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        margin: 0 0 25px;
+    }
+    
+    .title {
+        font-family: 'Anton', sans-serif;
+        line-height: 1;
+        text-transform: uppercase;
+        font-size: 7.5rem;
+        margin: 0 0 25px;
+    }
+    
+    .bajada {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            margin: 0 0 25px;
+            line-height: 1.3;
+    }
+    
+    .autores {
+        font-weight: 500;
+        font-size: 24px;
+        display: flex;
+        margin: 20px;
+        justify-content: center;
+    }
+    span.autor {
+        padding-right: 5px;
+        font-weight: bold;
+    }
+    
+    span.por{
+        color:blueviolet;
+        font-weight: bold;
+    }
+    
+    
+    .imagenArticulo img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .textoArticulo {
+        max-width: 800px;
+        margin:auto;
+        text-align: justify;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        padding: 0;
+    }
+    
+    .textoArticulo p {
+        margin: 0 0 25px;
+        line-height: 1.5;
+        font-size: 20px;
+    }
+    
+    .finalArt {
+        font-size: 20px;
+        padding: 0;
+    }
+    .cierre {
+            max-width: 800px;
+            text-align: center;
+            margin:auto;
+    
+            border-top: 2px solid rgb(180 128 228);
+    
+    }
+    
+    .fechaArt {
+        font-family: 'Raleway', sans-serif;
+    
+        max-width: 800px;
+        margin:auto;
+        text-align: right;
+        padding: 5px;
+        color:blueviolet;
+        font-weight: bold;
+    }
+    .catLink {
+        font-family: 'Raleway', sans-serif;
+        display: inline-block;
+        padding: 5px;
+        color:blueviolet;
+        font-weight: bold;
+        cursor: pointer;
+        margin: auto;
+        cursor: pointer;
+        text-align: right;
+    }
+    
+    
+    .catLink a {
+        color:blueviolet;
+    }
+    
+    .catcontainer {
+        max-width: 800px;
+        margin:auto;
+        text-align: right;
+    }
+
+}

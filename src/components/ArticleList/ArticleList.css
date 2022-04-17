@@ -1,0 +1,103 @@
+.loading {
+  float: none;
+  color: #333333;
+  animation: flash;
+  animation-duration: 2s;
+  font-family: "Lato", Helvetica, sans-serif;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.catNotFound {
+  font-family: "Lato", Helvetica, sans-serif;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: center;
+  font-weight: 700;
+  align-items: center;
+}
+
+.backHome p {
+  color: #333333;
+  font-family: Lato, sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+#homeicon {
+  margin: 40px;
+  font-size: 2.8rem;
+  padding: 20px;
+  color: #f0f0f0;
+  background-color: #333333;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.grilla-art {
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.more {
+  display: inline-block;
+  color: rgb(114 114 114);
+
+  font-family: "Fjalla One", sans-serif;
+  font-size: 0.9rem;
+  padding: 5px;
+  margin: 10px;
+}
+
+.more:hover {
+  display: inline-block;
+  background: rgb(114 114 114);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+
+
+/* FUENTE SPINER: https://codepen.io/cbhoweth/pen/GJYWye
+ */	
+#loading-bar-spinner.spinner {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  position: absolute;
+  z-index: 19 !important;
+  animation: loading-bar-spinner 500ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+  width: 80px;
+  height: 80px;
+  border:  solid 10px transparent;
+  border-top-color:  #775077 !important;
+  border-left-color: #775077 !important;
+  border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+/* FUENTE SPINER: https://codepen.io/cbhoweth/pen/GJYWye
+ */	

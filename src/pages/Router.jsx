@@ -7,50 +7,53 @@ import {
 
 import Navbar from "../components/Navbar/Navbar.jsx";
 import ArticleListContainer from "../components/ArticleListContainer/ArticleListContainer.jsx";
+import ArticleDetailContainer from "../components/ArticleDetailContainer/ArticleDetailContainer.jsx";
+import Footer from '../components/Footer/Footer.jsx';
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 //import Contacto from '../components/Contacto/Contacto.jsx'
-//import Footer from '../components/Footer/Footer.jsx';
+
 //import NotFound from './errors/NotFound.jsx'
   
   function Router() {
 
     return(
 
+      
+        <BrowserRouter>
+        <ScrollToTop>
+            <Navbar/>
 
-      <BrowserRouter>
+          
+            <Switch>
+                <Route path='/' exact>
+                  <ArticleListContainer />
+                </Route>
 
+                <Route path='/category/:categoria' exact> 
+                  <ArticleListContainer />
+                </Route>
 
-        <Navbar/>
+              
+                <Route path='/article/:title' exact>
+                  <ArticleDetailContainer />
+                </Route>
 
-       
-        <Switch>
-            <Route path='/' exact>
-              <ArticleListContainer />
-            </Route>
+              {/*
+                <Route path='/contacto' exact>
+                  <Contacto />
+                </Route>
 
-            <Route path='/category/:categoria' exact> 
-              <ArticleListContainer />
-            </Route>
+                <Route component={NotFound} />
+                */}
 
-          {/*
-            <Route path='/item/:id' exact>
-              <ArticleDetailContainer />
-            </Route>
+                </Switch>
+              
+            <Footer />
 
-            <Route path='/contacto' exact>
-              <Contacto />
-            </Route>
-
-            <Route component={NotFound} />
-            */}
-
-            </Switch>
-           
-         {/*<Footer />*/}
-
-     
-      </BrowserRouter>
-
+        </ScrollToTop>
+        </BrowserRouter>
+      
     )
 
   } 

@@ -1,0 +1,32 @@
+main {
+    margin-top: 70px;
+    min-height: 100vh -70px;
+}
+
+h1.tituloseccion {
+    font-family: fantasy;
+    padding-top: 40px;
+    text-align: right;
+    font-weight: 80;
+    font-size: 8rem;
+    color: #fafafa;
+    background-color: #da73ff;
+    
+    line-height: 40px;
+    font-size: 70px;
+}
+
+@media (min-width: 800px) {
+    h1.tituloseccion {  
+        line-height: 60px;
+        font-size: 100px;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    h1.tituloseccion {  
+        line-height: 80px;
+        font-size: 140px;
+    }
+}

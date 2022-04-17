@@ -38,7 +38,7 @@ h1 {
 }
 
 .burger :hover {
-  color: blueviolet;
+  color: #da73ff;
   transition: color 0.5s;
 }
 
@@ -71,18 +71,40 @@ ul {
   list-style: none;
 }
 
-li {
+li a {
   color: #333;
   transition: color 0.5s;
   height: 70px;
   line-height: 70px;
 }
 
-li:hover {
+li a:hover {
   cursor: pointer;
-  color: blueviolet;
+  color: #da73ff;;
   transition: color 0.5s;
 }
+
+
+
+.marca a {
+  cursor: pointer;
+  color: #333333;
+}
+
+a:link, a:visited, a:hover, a:focus, a:active{
+  color: none;
+  text-decoration: none;
+}
+
+
+svg {
+  width: 43px;
+  height: 43px;
+  fill: #333;
+  padding: 2px;
+  margin-left: 10px;
+}
+
 
 @media (min-width: 800px) {
   header {
@@ -100,8 +122,8 @@ li:hover {
   header nav ul li {
     display: inline;
     position: relative;
-    padding: 10px;
-    font-size: 0.95rem;
+    padding: 8px;
+    font-size: 14px;
   }
 
   nav {
@@ -112,10 +134,15 @@ li:hover {
     width: auto;
     height: 70px;
   }
+
+  svg {
+    margin-left: 0px;
+  }
 }
 
 @media (min-width: 1024px) {
   header nav ul li {
     font-size: 1.1rem;
+    padding: 10px;
   }
 }
