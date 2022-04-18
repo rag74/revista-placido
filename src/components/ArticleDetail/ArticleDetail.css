@@ -39,6 +39,7 @@
     text-transform: uppercase;
     font-size: 3.2rem;
     margin: 0 0 25px;
+    text-shadow: 0 0 4px white;
 }
 
 .bajada {
@@ -55,13 +56,16 @@
     display: flex;
     margin: 20px;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 span.autor {
     padding-right: 5px;
     font-weight: bold;
+    color:black;
 }
 
-span.por{
+h4.por{
     color:blueviolet;
     font-weight: bold;
 }
@@ -137,7 +141,7 @@ span.por{
 
 
 /*///////////////////////////////////
-//////PANTALLA  /////////////
+//////PANTALLA  TABLET /////////////
 ////////////////////////////////////
  */
  @media (min-width: 800px) {
@@ -234,18 +238,15 @@ span.por{
     }
     
     .autores {
-        font-weight: 500;
         font-size: 24px;
-        display: flex;
-        margin: 20px;
-        justify-content: center;
     }
     span.autor {
         padding-right: 5px;
         font-weight: bold;
+        color:black;
     }
     
-    span.por{
+    h4.por{
         color:blueviolet;
         font-weight: bold;
     }

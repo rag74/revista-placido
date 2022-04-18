@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Article({title,volanta,autor,arte,foto,maincategory,article}) {
 
     return (
-        <div className="cardArticulo">
+        <div className="cardArticulo animate__animated animate__fadeIn">
             <Link to={`/article/${title}`}>
             <div className="cardImage" style={{ backgroundImage: 'url(' + foto + ')'}}>
                 <h2><Link to={`/category/${maincategory}`}>{maincategory}</Link></h2>

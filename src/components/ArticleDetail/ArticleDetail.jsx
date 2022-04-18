@@ -29,8 +29,11 @@ function ArticleDetail({articulo}) {
                 <p className="bajada">{articulo.bajada}</p>
 
                 <div className="autores">
-                    <span className="por">Por: </span><span className="autor">{articulo.autor}</span>
-                    {articulo.arte.length > 0 ? <><span className="por">| Arte: </span><span className="autor">{articulo.arte}</span></> : null}
+                    {/*<span className="por">Por: </span><span className="autor">{articulo.autor}</span>
+                    {articulo.arte.length > 0 ? <><span className="por">| Arte: </span><span className="autor">{articulo.arte}</span></> : null}*/}
+                
+                <h4 className="por">Por: <span className="autor">{articulo.autor}</span></h4>
+                    {articulo.arte.length > 0 ? <h4 className="por">| Arte: <span className="autor">{articulo.arte}</span></h4> : null}
                 </div>
             </div>
 
