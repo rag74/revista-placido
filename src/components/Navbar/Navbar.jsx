@@ -29,7 +29,7 @@ function Navbar() {
                     Created by potrace 1.16, written by Peter Selinger 2001-2019
                     </metadata>
                     <g transform="translate(0.000000,980.000000) scale(0.100000,-0.100000)"
-                    fill="#000000" stroke="none">
+                    fill="currentColor" stroke="none">
                     <path d="M1745 9779 c-158 -8 -230 -28 -364 -100 -164 -88 -298 -213 -408
                     -380 -72 -110 -97 -174 -113 -287 -14 -97 -29 -732 -30 -1222 0 -206 -3 -485
                     -7 -620 l-6 -246 -81 -28 c-344 -120 -569 -345 -680 -679 -41 -125 -49 -229
