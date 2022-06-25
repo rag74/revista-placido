@@ -11,16 +11,16 @@ import db from '../../firebase'
 function ArticleDetailContainer() {
 
   
-  const {title} = useParams()
+  const {id} = useParams()
 
   const [articulo, setArticulo] = useState();
   const [loading, setLoading] = useState(true)
-  console.log(title);
+  console.log(id);
 
   useEffect(()=>{
       async function getArticulo() {
         const arr = []
-        const q = query(collection(db, "articles"), where("title", "==", title))
+        const q = query(collection(db, "articles"), where("articleID", "==", id))
         const querySnapshot = await getDocs(q);
       querySnapshot.forEach(item => {arr.push(item.data())})
       setArticulo(arr);

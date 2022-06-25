@@ -3,10 +3,17 @@ import './ArticleList.css';
 import { Link } from 'react-router-dom';
 import Article from '../Article/Article'
 
+import { useParams } from "react-router-dom";
+
 
 
 function ArticleList ({articulos, loading}) {
 
+const {categoria} = useParams();
+
+if(categoria == null) {
+    articulos = articulos.filter(articulos => articulos.carrousel === false );
+}
 
 
 const [loopNum, setloopNum] = useState(3)
@@ -33,17 +40,19 @@ const loadMore = ()=> {
                         </Link>
                         </div> :
             <div>
-                <div className="grilla-art"> 
+                <div className="grilla-art">  
                 {
-                articulos.slice(0, loopNum).map(article => {return <Article
+               
+               articulos.slice(0, loopNum).map(article => {return <Article
                                                     key={article.title} 
                                                     title={article.title} 
                                                     volanta={article.volanta}
                                                     autor={article.autor}
                                                     arte={article.arte}
-                                                    foto={article.foto}
+                                                    imagenprincipal={article.imagenprincipal}
                                                     article={article}
                                                     maincategory={article.maincategory}
+                                                    id={article.articleID}
                                                 />
                                         })
                     }

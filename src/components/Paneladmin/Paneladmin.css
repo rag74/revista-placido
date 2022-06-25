@@ -1,0 +1,105 @@
+.panelContainer {
+  width: 100%;
+  max-width: 1000px;
+    padding: 0px 5px;
+   margin: 0 auto;
+}
+
+.panel-header {
+display: flex;
+}
+
+.panel-tabla {
+    margin: 15px 0;
+}
+
+.buttonNew {
+    background-color: rgb(180, 128, 228);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+.buttonNew:hover {
+    cursor: pointer;
+    background-color: rgb(164, 95, 228);
+}
+
+h3 {
+    padding: 5px 0;
+}
+
+.loader {
+    color: rgb(164, 95, 228);
+    display: flex;
+    line-height: 50px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headRow,.artRow{
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    font-size: 14px;
+}
+.headRow {
+    background-color: #f5f5f5;
+}
+
+
+.headRow span {
+    text-align: center;
+    font-weight: bold;
+    width: 10%;
+}
+
+div.panel span{
+    font-size: 13px;
+}
+span.titulo {
+    width: 25%;
+}
+
+
+span.auto {
+    width: 20%;
+    text-align: center;
+}
+
+span.editor1 {
+    width: 15%;
+    text-align: center;
+    overflow: hidden;
+}
+
+span.fecha {
+    width: 10%;
+    text-align: center;
+}
+
+span.estado {
+    width: 10%;
+    text-align: center;
+}
+
+span.carrusel {
+    width: 6%;
+    text-align: center;
+}
+
+span.accion {
+    width: 10%;
+    text-align: center;
+}
+
+.buttonRow:hover {
+    cursor: pointer;
+}

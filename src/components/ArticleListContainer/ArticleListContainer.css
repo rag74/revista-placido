@@ -2,13 +2,15 @@ main {
     margin-top: 70px;
     min-height: 100vh -70px;
 }
+.listadoArticulos {
+    padding-top:40px;
+}
 
 h1.tituloseccion {
-    font-family: 'Impacted', sans-serif;
+    font-family: 'impacted', sans-serif;
     padding-top: 40px;
     text-align: right;
     font-weight: 80;
-    font-size: 8rem;
     color: #fafafa;
     background-color: #da73ff;
     

@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import './Editnavbar.css';
 import { Link } from 'react-router-dom';
+import {useUserAuth} from '../../Context/UserAuthContext';
+import { useHistory } from "react-router-dom";
 
 function Navbar() {
 
+
+    const {user, logOut} = useUserAuth();
+    const history = useHistory();
+    const [error, setError] = useState("");
     const [click, setClick] = useState(false);
     const [clickSub, setClickSub] = useState(false);
+
+    const handleLogOut = async (e) => {
+        setError("");
+        try {
+          await logOut();
+          history.push("/login");
+        } catch (err) {
+          setError(err.message);
+          console.log(error)
+        }
+        console.log(user)
+      };
     
     const handleClick = () => {
         if (window.innerWidth < 1024) {
@@ -22,7 +40,7 @@ function Navbar() {
     return(
         <header>
             <div className='marca'>
-                <svg id="bondi2" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <svg id='bondi' version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="981.000000pt" height="980.000000pt" viewBox="0 0 981.000000 980.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <metadata>
@@ -64,13 +82,19 @@ function Navbar() {
                     </svg>
             <h1><Link to="/">altoBONDI</Link></h1>
             </div>
-
+            {/*}
             <div className="burger" onClick={handleClick}>
                 <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
             </div>
+            */}
+            {user && <div className='navUser'>
+                        <div className='usermail'>({user.email})</div>
+                        <div className='navbutton' onClick={handleLogOut}>salir</div>
+                        
+                    </div>}
 
-            
-            <nav className={click ? "menu fold" : "menu"} /*onClick={handleClick}*/>
+            {/*
+            <nav className={click ? "menu fold" : "menu"}>
                 <ul className="menunav" onClick={handleClick}>
                     <li><Link to="/category/Ficciones">Ficciones</Link></li>
                     <li><Link to="/category/Poesía">Poesía</Link></li>
@@ -81,7 +105,7 @@ function Navbar() {
                     <li>Que es AltoBondi</li>
                 </ul>
             </nav>
-
+            */}
 
         </header>
 

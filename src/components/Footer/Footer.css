@@ -18,7 +18,11 @@ footer {
     font-size: 14px;
 }
 
-.logo svg{
+.contacto-footer h3 {
+    padding: 0;
+}
+
+svg#bondi3 {
     color:#f0f0f0;
     margin-left: 5px;
     height: 45px;
@@ -45,7 +49,7 @@ footer {
         font-size: 16px;
     }
     
-    .logo svg{
+    svg#bondi3{
         color:#f0f0f0;
         margin-left: 5px;
         height: 45px;

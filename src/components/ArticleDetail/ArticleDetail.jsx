@@ -38,7 +38,7 @@ function ArticleDetail({articulo}) {
             </div>
 
             <div className="imagenArticulo">
-                <img src={articulo.foto} alt=""/>
+                <img src={articulo.imagenprincipal} alt=""/>
             </div>
 
             <div className="textoArticulo" dangerouslySetInnerHTML={{ __html: articulo.innerHtml }}/>

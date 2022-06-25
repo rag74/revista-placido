@@ -1,0 +1,160 @@
+/* MODIFICACIONES AL CSS ORIGINAL CARRUSEL//*/
+
+
+
+
+
+
+.carousel-item {
+    height: calc(100vh - 70px) !important;
+}
+
+.indicators {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    flex-direction: row;
+    width: 100%;
+    color: #f0f8ffd1;
+}
+
+.indicators:hover{
+    cursor: pointer;
+    color:#f9fcff;
+}
+
+.indicatorsDots {
+    display: flex;
+    justify-content: center;
+    display: flex;
+    padding: 0 15px;
+    font-size: 10px;
+    position: absolute;
+    bottom: 2%;
+    flex-direction: row;
+    width: 100%;
+    color: #5353538a;
+}
+
+.indicatorsDots i {
+    margin: 0 5px;
+}
+
+.indicatorsDots i:hover {
+    color: #f0f8ffa4;
+}
+
+
+/*////////////////////////////
+////////////////////////////*/
+
+
+.carruSlide {
+    /* height: 100%; */
+    width: 100%;
+    background-color: #343434;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100%;    
+}
+
+
+.s-text {
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0) 22%, rgba(0,0,0,0.3561799719887955) 26%);
+    padding: 20px 10px;
+    height: 100%;
+    width: 100%;
+
+}
+.slideText {
+    /* background-color: blueviolet; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    white-space: break-spaces;
+    text-align: center;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0) 22%, rgba(0,0,0,0.3561799719887955) 76%);
+    padding: 20px 10px;
+
+
+}
+
+.slideText h1 {
+    font-family: "Anton", sans-serif;
+    font-size: 90px;
+    line-height: 95px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+    padding-bottom: 15px;
+}
+
+.slideText h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+    padding-bottom: 15px;
+}
+
+.slideText p {
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+}
+
+
+@media (max-width: 800px) {
+
+    .carousel-item {
+        height: 500px;
+    }
+
+    .carruSlide {
+        height: 100%;
+    }
+    .slideText {
+        width: 100%;
+        padding: 20px;
+        height: -webkit-fill-available;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .slideText h1 {
+        font-size: 60px;
+        line-height: 65px;
+        text-align: center;
+    }
+
+    .slideText h3 {
+        font-size: 20px;
+    }
+    
+    .slideText p {
+        font-size: 18px;
+    }
+
+    .carousel-item {
+    }
+
+    .indicators {
+
+        font-size: 25px;
+        padding:0
+    }
+
+    .indicatorsDots {
+    }
+}

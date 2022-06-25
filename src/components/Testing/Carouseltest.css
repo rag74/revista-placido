@@ -1,0 +1,36 @@
+.carouseli {
+  overflow: hidden;
+}
+
+.inneri {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-itemi {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  background-color: green;
+  color: #fff;
+}
+
+.indicatorsi {
+  display: flex;
+  justify-content: center;
+}
+
+.indicatorsi > button {
+  margin: 5px;
+}
+
+.indicatorsi > button.active {
+  background-color: green;
+  color: #fff;
+}
+
+.indicatorsDotsi {
+  display: flex;
+  justify-content: center;
+}

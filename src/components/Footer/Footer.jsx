@@ -14,7 +14,7 @@ function Footer() {
                 </div>
 
                 <div className="logo">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                    <svg id="bondi3" version="1.0" xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 981.000000 980.000000"
                         preserveAspectRatio="xMidYMid meet">
                         <metadata>

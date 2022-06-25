@@ -1,0 +1,165 @@
+/* MODIFICACIONES AL CSS ORIGINAL CARRUSEL//*/
+
+
+.carousel-itemi {
+    height: 90vh !important;
+}
+
+.indicatori {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    font-size: 40px;
+    position: absolute;
+    top: 40%;
+    flex-direction: row;
+    width: 100%;
+    color: #f0f8ffd1;
+}
+
+.indicatorsi:hover{
+    cursor: pointer;
+    color:#f9fcff;
+}
+
+.indicatorsDotsi {
+    display: flex;
+    justify-content: center;
+    display: flex;
+    padding: 0 15px;
+    font-size: 10px;
+    position: absolute;
+    top: 85%;
+    flex-direction: row;
+    width: 100%;
+    color: #5353538a;
+    ;
+}
+
+.indicatorsDotsi i {
+    margin: 0 5px;
+}
+
+.indicatorsDotsi i:hover {
+    color: #f0f8ffa4;
+}
+
+.indicatorsDotsi > div:active {
+    color: #f0f8ffa4;
+}
+
+
+/*////////////////////////////
+////////////////////////////*/
+
+
+.carruSlidei {
+    /* height: 100%; */
+    width: 100vw;
+    background-color: #343434;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100%;    
+}
+
+
+.s-texti {
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0) 22%, rgba(0,0,0,0.3561799719887955) 26%);
+    padding: 20px 10px;
+    height: 100%;
+    width: 100%;
+
+}
+.slideTexti {
+    /* background-color: blueviolet; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    white-space: break-spaces;
+    text-align: center;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0) 22%, rgba(0,0,0,0.3561799719887955) 76%);
+    padding: 20px 10px;
+
+
+}
+
+.slideTexti h1 {
+    font-family: "Anton", sans-serif;
+    font-size: 90px;
+    line-height: 95px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+    padding-bottom: 15px;
+}
+
+.slideTexti h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+    padding-bottom: 15px;
+}
+
+.slideTexti p {
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+}
+
+
+@media (max-width: 800px) {
+
+    .carousel-itemi {
+        height: 70vh !important;
+    }
+
+    .carruSlidei {
+        height: 100%;
+    }
+    .slideTexti {
+        width: 100%;
+        padding: 20px;
+        height: -webkit-fill-available;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .slideTexti h1 {
+        font-size: 45px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    .slideTexti h3 {
+        font-size: 20px;
+    }
+    
+    .slideTexti p {
+        font-size: 18px;
+    }
+
+    .carousel-itemi {
+        height: 60vh !important;
+    }
+
+    .indicatorsi {
+        position: absolute;
+        top: 27%;
+        font-size: 25px;
+        padding:0
+    }
+
+    .indicatorsDotsi {
+        position: absolute;
+        top: 57%
+    }
+}

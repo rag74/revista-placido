@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import "./ArticleListContainer.css";
 import ArticleList from '../ArticleList/ArticleList';
+import Carrusel from '../Carrusel/Carrusel';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
+import {useUserAuth} from '../../Context/UserAuthContext';
+import { useHistory } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
 
 function ArticleListContainer() {
+
+    /*const {user} = useUserAuth();
+    console.log(user.email);
+    const history = useHistory()
+    {!user && history.push("/testing")}   */
 
     const {categoria} = useParams();
 
     const [articulos, setArticulos] = useState([]);
     const [loading, setLoading] = useState(true);
    
+    //
   
     useEffect(() => {
 
@@ -21,7 +30,7 @@ function ArticleListContainer() {
   
           if(categoria!=null) {
       
-              const q = query(collection(db, "articles"), where("categories", "array-contains", (categoria)))
+              const q = query(collection(db, "articles"), where("categories", "array-contains", (categoria)), where("estado", "==", "publicado"))
               const querySnapshot = await getDocs(q);
               
               querySnapshot.forEach(item => {
@@ -32,7 +41,8 @@ function ArticleListContainer() {
               setLoading(false);
   
           } else {  
-              const querySnapshot = await getDocs(collection(db, "articles"));
+              const q = query(collection(db, "articles"), where("estado", "==", "publicado"))
+              const querySnapshot = await getDocs(q);
               querySnapshot.forEach((item) => {
                   arr.push(item.data())
                   });
@@ -47,23 +57,29 @@ function ArticleListContainer() {
   
 
   console.log(articulos);
+  
 
     return (
         <main>
-  
-        <div>
+            <div>
             {categoria!=null ?
                 <h1 className="tituloseccion"> {categoria.toLowerCase()} </h1> 
                 : 
-                ""};
                 
+                 <Carrusel articulos={articulos}
+                            loading={loading}   
+                />
+                
+             }
+             </div>   
+
             <div className="listadoArticulos"> 
+
                 {<ArticleList articulos={articulos}
                         loading={loading}
                 />}
             </div>
-        </div>
-      
+        
       </main>
     )
 
