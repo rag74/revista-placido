@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {useUserAuth} from '../../Context/UserAuthContext';
 import { useHistory } from "react-router-dom";
 
-function Navbar() {
+function Editnavbar() {
 
 
     const {user, logOut} = useUserAuth();
@@ -113,31 +113,4 @@ function Navbar() {
 
 }
 
-export default Navbar
-
-/*
-<Link to="/">   
-<i className="fas fa-book-open libro"></i>
-<h1>BOOKSTORE</h1>
-</Link>
-
-<div className="burger" onClick={handleClick}>
-<i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-</div>
-
-<nav className={click ? "menu fold" : "menu"} onClick={handleClick}>
-<ul className="menunav">
-    <li><Link to="/category/novedades">Novedades</Link></li>
-    <li><Link to="/category/mas vendidos">Los más vendidos</Link></li>
-    <li><Link to="/" >Catálogo <i class="fas fa-caret-down"></i></Link>
-        <ul className={clickSub ? "submenu none" : "submenu"} onClick={handleClickSub}>
-            <li><Link to="/category/literatura argentina" >Literatura Argentina</Link></li>
-            <li><Link to="/category/internacional" >Internacional</Link></li>
-            <li><Link to="/category/novela">Novela</Link></li>
-            <li><Link to="/category/clásicos">Clásicos</Link></li>
-        </ul>
-    </li>
-    <li><Link to="/contacto">Contacto</Link></li>
-</ul>
-</nav>
-*/
+export default Editnavbar
