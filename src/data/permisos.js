@@ -1,0 +1,1 @@
+export const permisos = ['l7bGGeQjnJNqoaxhQ5cd9cJRAfW2', 'fEqyUn1whcPVJpUrEUQ9VQOWkep1']

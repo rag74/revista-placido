@@ -7,6 +7,8 @@
 
 .panel-header {
 display: flex;
+flex-direction: row;
+flex-wrap: wrap;
 }
 
 .panel-tabla {
@@ -28,6 +30,7 @@ display: flex;
     cursor: pointer;
     background-color: rgb(164, 95, 228);
 }
+
 
 h3 {
     padding: 5px 0;
@@ -103,3 +106,5 @@ span.accion {
 .buttonRow:hover {
     cursor: pointer;
 }
+
+

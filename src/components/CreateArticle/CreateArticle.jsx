@@ -6,6 +6,7 @@ import { useUserAuth } from '../../Context/UserAuthContext';
 import { doc, getDoc } from "firebase/firestore";
 import db from '../../firebase';
 import Switch from "react-switch";
+import Updating from '../Updating/Updating';
 
 
 
@@ -18,10 +19,7 @@ function CreateArticle() {
 
     const localuser = JSON.parse(localStorage.getItem('localuser'));
     
-
-
         
-
     const {generateID, guardarBorrador, admin} = useUserAuth();
     console.log(admin);
 
@@ -45,7 +43,7 @@ function CreateArticle() {
     const [editormail, setEditormail] = useState('');
     const [fecha, setFecha] = useState('');
     const [carrousel, setCarrousel] = useState(false);
-    const [htmlcont, setHtmlcont] = useState('');
+    const [htmlcont, setHtmlcont] = useState(" ");
 
     ///VARIABLES SWITCH//
     const [checked, setChecked] = useState(false);
@@ -82,7 +80,10 @@ function CreateArticle() {
                 const docRef = doc(db, "articles", id);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
+
+                    
                     setLoading(false);
+                    
                     console.log("Document data:", docSnap.data());
                     console.log("Document id:", docSnap.id);
 
@@ -132,6 +133,7 @@ function CreateArticle() {
                     setEditor(docSnap.data().editor);
 
                     setEditormail(docSnap.data().editormail);
+
                     
 
                     }} else {
@@ -141,6 +143,7 @@ function CreateArticle() {
                         !editor && setEditor(localuser.uid);
                         !editormail && setEditormail(localuser.email);
                         !carrousel && setCarrousel(false);
+                        
                         setLoading(false);}
             
             }    
@@ -160,20 +163,20 @@ function CreateArticle() {
       }
     };
 
-    
+    const [updating , setUpdating] = useState(false)
       
-    const handleGuardar = () => {   alert(articleData.articleID);
-                                    setModaltitle("Borrador guardado!");
+    const handleGuardar = async () => {   
+                                    setUpdating(true)
+                                    setModaltitle("Cambios guardados!");
                                     setModalmessage("Puede seguir editando este artículo cerrando esta ventana, o volver al panel general presionando el botón de abajo");
                                     setButtonmessage("Volver al panel");
                                     setLinkmodal("/panel");
                                     setClosemodal("#");
-                                    guardarBorrador(articleData);                                        
-                                    
+                                    await guardarBorrador(articleData);                                  
+                                    setUpdating(false)
                                 }
 
-    const handleRevisar = () => {   
-                                    alert(articleData.estado);
+    const handleRevisar = () => {   setUpdating(true)
                                     setEstado("pendiente");
                                     setModaltitle("Artículo en revisión!");
                                     setModalmessage("El articulo fue enviado al administrador. Luego de ser revisado quedará pubicado en la revista");
@@ -186,7 +189,7 @@ function CreateArticle() {
 
                          
 
-    const handlePublicar = () => {  alert(articleData.estado);
+    const handlePublicar = () => {  setUpdating(true)
                                     setEstado("publicado");
                                     if (fecha === "" || fecha === null) setFecha(fechahumana);
                                     setModaltitle("Artículo publicado!");
@@ -201,6 +204,8 @@ function CreateArticle() {
     const handleVer = () => {   let element = document.getElementById("miModal");
                                 element.classList.remove("ver");
                             }
+
+
 
     function categoriesToArray(params) {
         params.replace(/\s/g, '');
@@ -250,13 +255,14 @@ function CreateArticle() {
         carrousel,
     }
 
-    useEffect(() => {
+    useEffect(async () => {
        
         if (guardar === "pendiente" || guardar === "publicado") {
             console.log('El estado articleData cambio', articleData.estado);
             console.log(articleData)
             console.log("Guardar igual: "+guardar);
-            guardarBorrador(articleData);
+            await guardarBorrador(articleData);
+            setUpdating(false)
         }
         setGuardar("");
      }, [guardar])
@@ -264,7 +270,81 @@ function CreateArticle() {
  console.log("Data del art: ");
  console.log(articleData);
 
- 
+function example_image_upload_handler (blobInfo, success, progress, failure) {
+    console.log(blobInfo)
+    console.log(blobInfo.blob())
+    console.log(blobInfo.base64())
+    var albumID = "gyoC5ct"
+    
+    /* Lets build a FormData object*/
+    var fd = new FormData(); 
+    fd.append("image", blobInfo.base64()); // Append the file
+    fd.append("album", albumID)
+    var ajax = new XMLHttpRequest(); // Create the XHR (Cross-Domain XHR FTW!!!) Thank you sooooo much imgur.com
+    ajax.open("POST", "https://api.imgur.com/3/image.json"); // Boooom!
+
+    
+    
+        
+    ajax.onload = function() {
+
+        if (ajax.status == 200) {
+  
+          if ( (!JSON.parse(ajax.responseText))
+          || (typeof JSON.parse(ajax.responseText).data.link != 'string') ) {
+            failure('Invalid: <code>'+ajax.responseText+'</code>');
+            
+            return;
+          }
+          	
+          success(JSON.parse(ajax.responseText).data.link);
+  
+          } else {
+            failure('Upload error: <code>'+ajax.status+'</code>');
+            return;
+          }
+  
+        };
+
+        //Authorization: 'Bearer b467093eb176a48b3f7c002dff1bdec3001f74c0'
+        //'Client-ID 6b646df75dc0f74'
+        ajax.setRequestHeader('Authorization', 'Bearer b467093eb176a48b3f7c002dff1bdec3001f74c0');
+        ajax.send(fd);
+  
+      }
+  
+    
+function manageClick() {let butfile = document.getElementById('fileselect');
+                        butfile.click();
+                        }
+
+function uploadMain(e) {
+                        
+                    console.log(e.target.files[0])
+                    
+                    if (e.target.files[0] != null) {
+                        setUpdating(true)
+                        const formdata = new FormData()
+                        formdata.append("image", e.target.files[0])
+
+                        fetch("https://api.imgur.com/3/image/", {
+                            method: "post",
+                            headers: {
+                                Authorization: "Bearer b467093eb176a48b3f7c002dff1bdec3001f74c0"
+                            },
+                            body: formdata
+                        }).then(data => data.json()).then(data => {
+                            console.log(data.data.link)
+                            setImagenPrincipal(data.data.link)
+                            document.getElementById("imagenprincipal").value = data.data.link
+                            setUpdating(false)
+                        })
+                    } else {console.log("no hay archivo")}
+        }
+
+
+    
+  
     
     return (
         <main>
@@ -275,6 +355,8 @@ function CreateArticle() {
             </div>
 
              : 
+            <>
+            { !admin && estado=="publicado" ? <p>El usuario no tienes permisos para editar artículos publicados</p> : 
             <>
             <div className="botones">
             <Link to="/panel"><div className='buttonNew'><i class="fa-solid fa-arrow-left"></i> Volver al panel</div></Link>
@@ -307,8 +389,10 @@ function CreateArticle() {
                         <input type="text" name="autor" id="autor" onChange={(e)=> setAutor(e.target.value)}/>
                         <label htmlFor="arte">Arte</label>
                         <input type="text" name="arte" id="arte" onChange={(e)=> setArte(e.target.value)}/>
-                        <label htmlFor="imagenprincipal">Imagen principal</label>
-                        <input type="text" name="imagenprincipal" id="imagenprincipal" onChange={(e)=> setImagenPrincipal(e.target.value)}/>
+                        <label htmlFor="imagenprincipal">Imagen principal (puede copiar la URL de la imagen o <button onClick={manageClick}> cargar <i class="fa-solid fa-arrow-up-from-bracket"></i></button> una desde su pc)</label>
+                        <div className='imgsel'>
+                            <input type="text" name="imagenprincipal" id="imagenprincipal" onChange={(e)=> setImagenPrincipal(e.target.value)}/><button onClick={manageClick}><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                        </div>
                         <label htmlFor="categorias">Más categorias / etiquetas {maincategory && <>(revise las categorias, no necesita volver a incluir '{maincategory}')</>}</label>
                         <input type="text" name="categorias" id="categorias" onBlur={(e)=> categoriesToArray(e.target.value)}/>
                         
@@ -319,10 +403,11 @@ function CreateArticle() {
                             onInit={(evt, editor) => editorRef.current = editor}
                             initialValue={htmlcont}
                             init={{
+                                images_upload_handler: example_image_upload_handler,
                                 height: 500,
                                 width: "100%",
                                 menubar: true,
-                                language: 'es',
+                                language: 'es_MX',
                                 plugins: [
                                 'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
                                 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
@@ -332,6 +417,49 @@ function CreateArticle() {
                                 'bold italic forecolor | image | alignleft aligncenter ' +
                                 'alignright alignjustify | bullist numlist outdent indent | ' +
                                 'removeformat | help',
+
+                                 //ABAJO - UPLOADER DE IMAGENES///  
+                                    /* enable title field in the Image dialog*/
+                                    image_title: true,
+                                    /* enable automatic uploads of images represented by blob or data URIs*/
+                                    automatic_uploads: true,
+                                    /*
+                                        URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+                                        images_upload_url: 'postAcceptor.php',
+                                        here we add custom filepicker only to Image dialog
+                                    */
+                                    file_picker_types: 'image',
+                                    /* and here's our custom image picker*/
+                                    file_picker_callback: (cb, value, meta) => {
+                                        const input = document.createElement('input');
+                                        input.setAttribute('type', 'file');
+                                        input.setAttribute('accept', 'image/*');
+
+                                        input.addEventListener('change', (e) => {
+                                        const file = e.target.files[0];
+
+                                        const reader = new FileReader();
+                                        reader.addEventListener('load', () => {
+                                            /*
+                                            Note: Now we need to register the blob in TinyMCEs image blob
+                                            registry. In the next release this part hopefully won't be
+                                            necessary, as we are looking to handle it internally.
+                                            */
+                                            const id = 'blobid' + (new Date()).getTime();
+                                            const blobCache =  window.tinymce.activeEditor.editorUpload.blobCache;
+                                            const base64 = reader.result.split(',')[1];
+                                            const blobInfo = blobCache.create(id, file, base64);
+                                            blobCache.add(blobInfo);
+
+                                            /* call the callback and populate the Title field with the file name */
+                                            cb(blobInfo.blobUri(), { title: file.name });
+                                        });
+                                        reader.readAsDataURL(file);
+                                        });
+
+                                        input.click();
+                                    },
+                                 //ARRIBA - UPLOADER DE IMAGENES/// 
                                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img { max-width: 100%; height: auto; display: block ;margin-left: auto; margin-right: auto; }'
                             }}
                             onEditorChange={log}
@@ -354,19 +482,21 @@ function CreateArticle() {
 
                     {title &&
                     <div className='accionesEdicion'>
-                        
+                            
                             <button className='btn-edicion' onClick={handleGuardar}>Guardar cambios</button>
                             
                             {!admin && estado === "borrador" &&
                             <button className='btn-edicion' onClick={handleRevisar}>Solicitar publicacion</button>
                             }
 
-                            {admin &&
+                            {admin && estado != "publicado" &&
                             <button className='btn-edicion' onClick={handlePublicar}>Publicar</button>
                             }
+
                     </div>
                     }
-
+                    
+                    <input type="file" id="fileselect" accept="image/*" onChange={(e)=>uploadMain(e)} />
 
 
             </div>
@@ -384,7 +514,7 @@ function CreateArticle() {
                             }
                         </div>
                         <img className='imagenArticulo' src={imagenprincipal} width="100%" alt="" />
-                        <div className='inner'>
+                        <div className='artText' id="artText">
                             {htmlcont && <div dangerouslySetInnerHTML={{__html: innerHtml}}></div>}
                         </div>
                         {categories &&
@@ -406,6 +536,8 @@ function CreateArticle() {
             </div>
             </> 
             }
+            </>
+            }
 
             <div id="miModal" class="modal">
                 <div class="modal-contenido">
@@ -421,7 +553,7 @@ function CreateArticle() {
                 </div>  
             </div>
 
-            
+            {updating && <Updating />}
         </main>
     )
 

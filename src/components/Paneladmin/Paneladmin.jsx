@@ -6,7 +6,8 @@ import Switchcarrousel from '../Switchcarrousel/Switchcarrousel';
 import { useUserAuth } from '../../Context/UserAuthContext';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
-import { getDefaultNormalizer } from '@testing-library/react';
+import Updating from '../Updating/Updating';
+import CreateUser from '../CreateUser/CreateUser';
 
 function Paneladmin({articulos, loading}) {
 
@@ -21,6 +22,7 @@ function Paneladmin({articulos, loading}) {
     const [buttonmessage, setbuttonmessage] = useState('');
     const [linkmodal, setLinkmodal] = useState('');
     const [closemodal, setClosemodal] = useState('');
+    const [updating , setUpdating] = useState(false)
 
   console.log(articulos);
   const localuser = JSON.parse(localStorage.getItem('localuser'))
@@ -64,14 +66,16 @@ function Paneladmin({articulos, loading}) {
     publicarArticulo(articleID);
    }
 
-  const handleEliminar = (articleID) => {
+  const handleEliminar = async (articleID) => {
+    setUpdating(true)
     console.log("Eliminar: "+articleID);
     setModaltitle("Articulo eliminado");
     setModalmessage("El articulo ha sido eliminado de forma correcta. Si se trató de un error, puede recuperar una copia de seguridad resguardada en la base de datos.");
     setbuttonmessage("Cerrar");
     setLinkmodal('');
     setClosemodal('');
-    eliminarArticulo(articleID);
+    await eliminarArticulo(articleID);
+    setUpdating(false)
 }
 
 
@@ -133,6 +137,10 @@ const handleVer = () => {   let element = document.getElementById("miModal");
                             element.classList.remove("ver");
                           }
 
+const verCreateUser = ()=> { var elemento = document.getElementById("create-user");
+                            elemento.classList.remove("none");
+                        }
+
   return (
     <>
      
@@ -143,7 +151,11 @@ const handleVer = () => {   let element = document.getElementById("miModal");
         <div className="panel">
           <div className="panel-header">
             <Link to="/crear"><div className='buttonNew'>Crear entrada</div></Link>
-            <div className='buttonNew'>Crear usuario</div>
+            <div className='buttonNew' onClick={verCreateUser}>Crear usuario</div>
+            
+            <div id="create-user" className='none'>
+             <CreateUser/>
+            </div>    
          </div>
 
          {pendientes && 
@@ -211,7 +223,8 @@ const handleVer = () => {   let element = document.getElementById("miModal");
                 </div>  
             </div>
       </div>
-    
+
+      {updating && <Updating />}
     </>
   )
 }

@@ -8,8 +8,9 @@ import {
     onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase/index";
-import { doc, setDoc, updateDoc } from '@firebase/firestore';
+import { doc, setDoc, updateDoc, getDoc } from '@firebase/firestore';
 import db from '../firebase'
+import { permisos } from "../data/permisos";
 
 const userAuthContext = React.createContext();
 
@@ -19,8 +20,7 @@ export function UserAuthContextProvider(props) {
     const [user, setUser] = useState("");
     const history = useHistory();
     const [admin, setAdmin] = useState(false);
-
-
+    console.log(permisos)
 
 
     useEffect(() => {
@@ -45,9 +45,13 @@ export function UserAuthContextProvider(props) {
     function logIn(email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
+
     function signUp(email, password) {
+
         return createUserWithEmailAndPassword(auth, email, password);
+
     }
+
     function logOut() {
         return signOut(auth);
     }
@@ -56,10 +60,10 @@ export function UserAuthContextProvider(props) {
 
 
     const checkAdmin = () => {
+
         const localuser = JSON.parse(localStorage.getItem('localuser'));
-        if (localuser.uid === "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") {
-            setAdmin(true)
-        } else { setAdmin(false) }
+        //if (localuser.uid === "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") 
+        permisos.includes(localuser.uid) ? setAdmin(true) : setAdmin(false)
     }
 
 
@@ -191,6 +195,8 @@ export function UserAuthContextProvider(props) {
             eliminarArticulo,
             revisarArticulo,
             publicarArticulo,
+            checkAdmin,
+            permisos,
             admin,
         })
 

@@ -183,7 +183,7 @@ padding: 5px;
   margin-bottom: 20px;
 } 
 
-.fixed-preview .inner {
+.fixed-preview .artText {
   width: 95%;
   margin: auto;
   text-align: justify;
@@ -191,12 +191,12 @@ padding: 5px;
   padding: 0 10px 0 10px;
 }
 
-.fixed-preview .inner img {
+.fixed-preview .artText img {
   width: 100% !important;
   height: auto !important;
 }
 
-.fixed-preview .inner p {
+.fixed-preview .artText p {
   margin: 0 0 25px;
   line-height: 1.5;
   font-size: 14px;
@@ -214,6 +214,26 @@ padding: 5px;
 
       border-top: 2px solid rgb(180 128 228);
 
+}
+
+.imgsel {
+  display: flex;
+}
+
+.imgsel button {
+  margin: 5px 0 10px 0;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+#imagenprincipal {
+  flex-grow: 1;
+  border-radius: 5px 0 0 5px
+}
+#fileselect {
+  display: none;
 }
 
 .fixed-preview .fechaArt {
@@ -319,7 +339,7 @@ EDITORES WYSIWYG ////////////////////
   padding-bottom: 1px;
 }
 .modal{
-  background-color: rgba(0,0,0,.8);
+  background-color: rgb(97 97 97 / 50%);
   position:fixed;
   top:0;
   right:0;

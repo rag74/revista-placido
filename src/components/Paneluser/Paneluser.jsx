@@ -29,7 +29,7 @@ function Paneluser({articulos, loading}) {
   const localeID = localuser.uid;
   console.log(localeID);
 
-  const pendientes = articulos.filter(articulos => articulos.estado === "pendiente" || articulos.estado === "borrador");
+  const pendientes = articulos.filter(articulos => articulos.estado == "borrador" || articulos.estado == "pendiente");
   console.log("Pendientes: ");
   console.log(pendientes);
 
@@ -111,13 +111,13 @@ function Paneluser({articulos, loading}) {
     <>
      
       <div className='panelContainer'>
+
         <h1>Panel usuario</h1>
-        
 
         <div className="panel">
           <div className="panel-header">
             <Link to="/crear"><div className='buttonNew'>Crear entrada</div></Link>
-            
+
          </div>
 
          {pendientes && 

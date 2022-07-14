@@ -8,7 +8,6 @@ import { useUserAuth } from "../../Context/UserAuthContext";
 import { useHistory } from "react-router-dom";
 
 
-
 function PanelContainer() {
 
   //const userID = localStorage.getItem("userID");  MIRAR ESTO LUEGO PARA VER COMO FUNCIONA
@@ -17,7 +16,9 @@ function PanelContainer() {
  /* const { user } = useUserAuth();
   console.log(user);*/
   const history = useHistory();
-  const { user} = useUserAuth();
+  const { user , permisos , admin} = useUserAuth();
+  //console.log(permisos);
+  console.log(admin);
 
   const localuser = JSON.parse(localStorage.getItem('localuser'));
   if (localuser) {
@@ -25,8 +26,9 @@ function PanelContainer() {
     console.log("User id: "+localuser.uid);
   }
 
+  //const userID = user.id
 
-  const userID = localuser.uid;
+  //const userID = localuser.uid;
   const [articulos, setArticulos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,9 +37,9 @@ function PanelContainer() {
   async function getArticulos() {
   const arr = []
 
-    if(userID!=="l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") {
+    if(!permisos.includes(localuser.uid)) {
 
-        const q = query(collection(db, "articles"), where("editor", "==", (userID)))
+        const q = query(collection(db, "articles"), where("editor", "==", (localuser.uid)))
         const querySnapshot = await getDocs(q);
         
         querySnapshot.forEach(item => {
@@ -68,7 +70,7 @@ function PanelContainer() {
     <main>
     <section className="panel-container">
         <div className="panel"> 
-          {(userID == "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") ? 
+          {permisos.includes(localuser.uid) ? 
           <Paneladmin articulos={articulos} loading={loading}/> : <Paneluser articulos={articulos} loading={loading} />}
         </div>
 

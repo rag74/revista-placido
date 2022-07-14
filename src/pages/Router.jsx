@@ -79,8 +79,8 @@ import Tinymcenew from "../components/Testing/Tinymcenew";
                 <Editnavbar />
                 <ProtectedRoute>
                 <PanelContainer />
-                </ProtectedRoute>
                 <Footer />
+                </ProtectedRoute>
               </Route>
 
               <Route path='/crear' exact>

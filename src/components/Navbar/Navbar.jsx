@@ -6,6 +6,8 @@ function Navbar() {
 
     const [click, setClick] = useState(false);
     const [clickSub, setClickSub] = useState(false);
+
+    const localuser = JSON.parse(localStorage.getItem('localuser'));
     
     const handleClick = () => {
         if (window.innerWidth < 1024) {
@@ -20,7 +22,9 @@ function Navbar() {
  
 
     return(
+        <>
         <header>
+
             <div className='marca'>
                 <svg id="bondi2" version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="981.000000pt" height="980.000000pt" viewBox="0 0 981.000000 980.000000"
@@ -82,8 +86,10 @@ function Navbar() {
                 </ul>
             </nav>
 
-
         </header>
+        
+        <a href={!localuser ? "/login" : "/panel"} className='entrada'></a>
+    </>
 
     );
 

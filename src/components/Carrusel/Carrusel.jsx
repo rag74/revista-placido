@@ -24,7 +24,9 @@ function Slide({title,volanta,autor,arte,imagenprincipal,maincategory,articleID,
             <div s-text>
             <div className='slideText'>
                 <h3>{volanta}</h3>
-                <h1><a href={`/article/${articleID}`}>{title}</a></h1>
+                <Link to={`/article/${articleID}`}>
+                  <h1>{title}</h1>
+                </Link>
                 <p>{autor}</p>
             </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './config'
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar/Navbar';
 import ArticleListContainer from './components/ArticleListContainer/ArticleListContainer';

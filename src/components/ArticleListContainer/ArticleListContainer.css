@@ -4,6 +4,8 @@ main {
 }
 .listadoArticulos {
     padding-top:40px;
+    max-width: 1300px;
+    margin: auto;
 }
 
 h1.tituloseccion {

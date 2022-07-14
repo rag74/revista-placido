@@ -14,6 +14,17 @@ header {
   box-shadow: 0px 1px 5px 0px rgba(130, 130, 130, 0.75);
 }
 
+.entrada {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0%;
+  right:0%;
+  cursor:default;
+  background-color: red;
+  z-index: 1000;
+}
+
 .marca {
   height: 70px;
   display: inline-flex;
