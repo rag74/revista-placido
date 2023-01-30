@@ -16,7 +16,7 @@ flex-wrap: wrap;
 }
 
 .buttonNew {
-    background-color: rgb(180, 128, 228);
+    background-color: #29D579;
     color: white;
     padding: 5px 15px;
     border-radius: 5px;
@@ -28,7 +28,7 @@ flex-wrap: wrap;
 
 .buttonNew:hover {
     cursor: pointer;
-    background-color: rgb(164, 95, 228);
+    background-color: #25ad65;
 }
 
 
@@ -37,7 +37,7 @@ h3 {
 }
 
 .loader {
-    color: rgb(164, 95, 228);
+    color: #25ad65;
     display: flex;
     line-height: 50px;
     flex-direction: row;

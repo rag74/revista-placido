@@ -3,10 +3,12 @@ import './CreateArticle.css';
 import { useParams , Link} from "react-router-dom";
 import { Editor } from '@tinymce/tinymce-react';
 import { useUserAuth } from '../../Context/UserAuthContext';
-import { doc, getDoc } from "firebase/firestore";
+import { useHistory } from "react-router-dom";
+import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import db from '../../firebase';
 import Switch from "react-switch";
 import Updating from '../Updating/Updating';
+
 
 
 
@@ -16,12 +18,14 @@ function CreateArticle() {
     const {id} = useParams()
     //const id = "art-fd8fe9cb";
     //art-fd8fe9cb
-
+    var admin = false
     const localuser = JSON.parse(localStorage.getItem('localuser'));
+
+    const history = useHistory();
     
         
-    const {generateID, guardarBorrador, admin} = useUserAuth();
-    console.log(admin);
+    const {generateID, guardarBorrador, permisos} = useUserAuth();
+    if (permisos.includes(localuser.uid)) admin = true;
 
     const [loading, setLoading] = useState(true);
     
@@ -35,7 +39,8 @@ function CreateArticle() {
     const [autor, setAutor] = useState('');
     const [arte, setArte] = useState('');
     const [imagenprincipal, setImagenPrincipal] = useState('');
-    const [categories, setCategories] = useState("");
+    const [imagenprincipal640, setImagenPrincipal640] = useState('');
+    const [categories, setCategories] = useState([]);
     const [innerHtml, setinner] = useState('');
     const [creado, setCreado] = useState('');
     const [estado, setEstado] = useState('');
@@ -110,6 +115,8 @@ function CreateArticle() {
                     document.getElementById("imagenprincipal").value = docSnap.data().imagenprincipal;
                     setImagenPrincipal(docSnap.data().imagenprincipal);
 
+                    //imagenPrincipal640 se setea en ussefect luego de handlever
+
                     setFecha(docSnap.data().fecha);
                     //document.getElementById("categories").value = docSnap.data().categories;
                     setCategories(docSnap.data().categories);
@@ -117,7 +124,7 @@ function CreateArticle() {
                     
                     document.getElementById("categorias").value = textCategories;
 
-                    setTimeout(() => setHtmlcont(docSnap.data().innerHtml), 500);
+                    setTimeout(() => setHtmlcont(docSnap.data().innerHtml), 10);
 
                     setinner(docSnap.data().innerHtml)
 
@@ -201,9 +208,28 @@ function CreateArticle() {
                                     //guardarBorrador(articleData);
                                 }
 
+    const handlePreview = async () => {   
+                                    setUpdating(true);
+                                    try {
+                                        await setDoc(doc(db, "articles", articleData.articleID), articleData);
+                                    } catch (err) {
+                                        console.log(err);
+                                        alert(err);
+                                    }
+                                    setUpdating(false);
+                                    window.open(`/preview/${articleID}`, "_blank");
+                                }
+
     const handleVer = () => {   let element = document.getElementById("miModal");
                                 element.classList.remove("ver");
                             }
+
+
+    useEffect (()=>{
+                var n = imagenprincipal.lastIndexOf(".");
+                if (n < 0) return ".";
+                setImagenPrincipal640 (imagenprincipal.substring(0,n) + "l" + imagenprincipal.substring(n))    
+            },[imagenprincipal]);
 
 
 
@@ -217,8 +243,15 @@ function CreateArticle() {
         if (array.includes(string)) {} else {
             array.unshift(string);}
 
-        setCategories(array);
-        console.log("array final: "+array);
+        const arraylower = array.map(element => {
+                return element.toLowerCase();
+              });
+
+        const dataArr = new Set(arraylower)
+        const result = [...dataArr];
+        document.getElementById("categorias").value = result.toString();
+        setCategories(result);
+        console.log("array final: "+result);
     }
 
     function mainCategoryToArray(params) {
@@ -226,13 +259,20 @@ function CreateArticle() {
         setMainCategory(params);
         let array = categories;
         let string = params;
-        if (array.includes(string)) {} else {
+        if (!array.includes(string)) {
             array.push(string);
-            document.getElementById("categorias").value = array.toString();}
-        setCategories(array);
-        console.log("array final mainCategoryToArray: "+array);
-        console.log(array)
+            let arraylower = array.map(element => {
+                return element.toLowerCase();
+              })
+            const dataArr = new Set(arraylower)
+            const result = [...dataArr];
+            document.getElementById("categorias").value = result.toString();
+            setCategories(result);
+            console.log("array final mainCategoryToArray: "+result);}
+        
         document.getElementById("categorias").focus() 
+        console.log(params)
+        console.log(maincategory)
     }
 
    
@@ -244,6 +284,7 @@ function CreateArticle() {
         autor,
         arte,
         imagenprincipal,
+        imagenprincipal640,
         categories,
         innerHtml,
         articleID,
@@ -293,7 +334,7 @@ function example_image_upload_handler (blobInfo, success, progress, failure) {
           if ( (!JSON.parse(ajax.responseText))
           || (typeof JSON.parse(ajax.responseText).data.link != 'string') ) {
             failure('Invalid: <code>'+ajax.responseText+'</code>');
-            
+            window.tinymce.activeEditor.undoManager.undo();
             return;
           }
           	
@@ -301,6 +342,7 @@ function example_image_upload_handler (blobInfo, success, progress, failure) {
   
           } else {
             failure('Upload error: <code>'+ajax.status+'</code>');
+            window.tinymce.activeEditor.undoManager.undo();
             return;
           }
   
@@ -359,8 +401,8 @@ function uploadMain(e) {
             { !admin && estado=="publicado" ? <p>El usuario no tienes permisos para editar artículos publicados</p> : 
             <>
             <div className="botones">
-            <Link to="/panel"><div className='buttonNew'><i class="fa-solid fa-arrow-left"></i> Volver al panel</div></Link>
-                
+            <Link to="/panel"><div className='buttonNew2'><i class="fa-solid fa-arrow-left"></i> Volver al panel</div></Link>
+            {innerHtml!='' && <div className='buttonNew2' onClick={handlePreview}>Vista previa <i class="fa-solid fa-arrow-up-right-from-square"></i></div>}   
             </div>
             <div className='articleEditionContainer'>
             
@@ -372,12 +414,12 @@ function uploadMain(e) {
                         <select name="maincategory" id="maincategory" onChange={(e)=> {mainCategoryToArray(e.target.value)}}> 
                                                                        {/* onBlur={(e)=>mainCategoryToArray()}>*/}
                             <option value="">Selecciona una categoría</option>
-                            <option value="Ficciones">Ficciones</option>
-                            <option value="Poesia">Poesia</option>
-                            <option value="Miradas">Miradas</option>
-                            <option value="Periodismo">Periodismo</option>
-                            <option value="Podcast">Podcast</option>
-                            <option value="Audiolibro">Audiolibro</option>
+                            <option value="ficciones">ficciones</option>
+                            <option value="poesía">poesía</option>
+                            <option value="miradas">miradas</option>
+                            <option value="periodismo">periodismo</option>
+                            <option value="podcast">podcast</option>
+                            <option value="altoviaje">altoviaje</option>
                         </select>
                         <label htmlFor="titulo">Titulo:</label>
                         <input type="text" name="titulo" id="titulo" onChange={(e)=> setTitle(e.target.value)}/>
@@ -413,6 +455,10 @@ function uploadMain(e) {
                                 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
                                 'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
                                 ],
+                                /*
+                                style_formats: [
+                                    {title: 'Class name', selector: 'p', classes: 'miclase'} 
+                                  ],*/
                                 toolbar: 'undo redo | blocks | ' +
                                 'bold italic forecolor | image | alignleft aligncenter ' +
                                 'alignright alignjustify | bullist numlist outdent indent | ' +
@@ -460,7 +506,8 @@ function uploadMain(e) {
                                         input.click();
                                     },
                                  //ARRIBA - UPLOADER DE IMAGENES/// 
-                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img { max-width: 100%; height: auto; display: block ;margin-left: auto; margin-right: auto; }'
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px; line-height:1;} img { max-width: 100%; height: auto; display: block ;margin-left: auto; margin-right: auto; } p {margin-bottom:1px; margin-top:1px;}',
+                                default_link_target: '_blank'
                             }}
                             onEditorChange={log}
                             />
@@ -483,15 +530,17 @@ function uploadMain(e) {
                     {title &&
                     <div className='accionesEdicion'>
                             
-                            <button className='btn-edicion' onClick={handleGuardar}>Guardar cambios</button>
+                            <div className='buttonNew2' onClick={handleGuardar}>Guardar cambios</div>
                             
                             {!admin && estado === "borrador" &&
-                            <button className='btn-edicion' onClick={handleRevisar}>Solicitar publicacion</button>
+                            <div className='buttonNew2' onClick={handleRevisar}>Solicitar publicacion</div>
                             }
 
                             {admin && estado != "publicado" &&
-                            <button className='btn-edicion' onClick={handlePublicar}>Publicar</button>
+                            <div className='buttonNew2' onClick={handlePublicar}>Publicar</div>
                             }
+
+                            {innerHtml!='' && <div className='buttonNew2' onClick={handlePreview}>Vista previa <i class="fa-solid fa-arrow-up-right-from-square"></i></div>}
 
                     </div>
                     }
@@ -513,11 +562,11 @@ function uploadMain(e) {
                             <h4 className='por'>Por: <span className='autor'>{autor}</span>{arte && <>| Arte: <span className='autor'>{arte}</span></>}</h4>
                             }
                         </div>
-                        <img className='imagenArticulo' src={imagenprincipal} width="100%" alt="" />
+                        <img className='imagenArticulo' src={imagenprincipal640} width="100%" alt="" />
                         <div className='artText' id="artText">
                             {htmlcont && <div dangerouslySetInnerHTML={{__html: innerHtml}}></div>}
                         </div>
-                        {categories &&
+                        {title &&
                          <>                            
                                 <div className='finalArt'>
                                 <p className="fechaArt">{!fecha ? fechahumana.toLocaleString('es-AR', dateOptions) 

@@ -25,11 +25,21 @@ header {
   z-index: 1000;
 }
 
+.isotipo {
+  width: 200px;
+  height: auto;
+}
+
 .marca {
   height: 70px;
   display: inline-flex;
-  align-items: center;
   font-size: 2.2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.marca a {
+  line-height:0%;
 }
 
 h1 {
@@ -49,7 +59,7 @@ h1 {
 }
 
 .burger :hover {
-  color: #da73ff;
+  color: #29D579;
   transition: color 0.5s;
 }
 
@@ -91,7 +101,7 @@ li a {
 
 li a:hover {
   cursor: pointer;
-  color: #da73ff;;
+  color: #29D579;
   transition: color 0.5s;
 }
 
@@ -155,5 +165,10 @@ svg#bondi2 {
   header nav ul li {
     font-size: 1.1rem;
     padding: 10px;
+  }
+
+  .isotipo {
+    width: 270px;
+    height: auto;
   }
 }

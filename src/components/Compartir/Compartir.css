@@ -1,0 +1,37 @@
+.compartir {
+    max-width: 800px;
+    /*background-color: #29d579;*/
+    margin: auto;
+    text-align: center;
+}
+
+.compartir i {
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #29d579;
+    transition: .2s ease-in-out;
+}
+
+.compartir .share:hover{
+    color:white;
+    background-color: #29d579;
+    cursor: pointer;
+    transition: .2s ease-in-out;;
+}
+
+
+@media (min-width: 800px)  {
+
+    .compartir {
+        text-align: right;
+    }
+
+    .compartir i {
+         padding: 5px;
+        margin: 5px;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+}

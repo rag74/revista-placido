@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ".//ArticleDetail.css";
+import Compartir from "../Compartir/Compartir";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+//import { useEffect } from "react";
 
 
 function ArticleDetail({articulo}) {
@@ -14,9 +16,45 @@ function ArticleDetail({articulo}) {
         </div>
             ))
 
-    const fechahumana = (articulo.fecha).toDate();
+    const fechahumana = new Date();
+    const miliseconds = new Date(articulo.fecha.seconds * 1000);
+    const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric'};
+    var renderImage ="";
+
+    if (window.innerWidth < 650) {
+      renderImage = articulo.imagenprincipal640
+      console.log(renderImage)
+    } else {
+      renderImage = articulo.imagenprincipal
+      console.log(renderImage)
+    }
+
 
     console.log((fechahumana).toString())
+
+    
+    useEffect(() => {
+       let divarticulo = document.getElementById("textoArticulo")
+       let parrafos = divarticulo.getElementsByTagName("p");
+       let iframecontent = divarticulo.getElementsByTagName("iframe");
+
+       console.log(parrafos)
+       for (let i = 0; i < divarticulo.getElementsByTagName("span").length; i++){
+       var span = divarticulo.getElementsByTagName("span")[0];
+       var pa = span.parentNode;
+       while (span.firstChild) pa.insertBefore(span.firstChild, span);
+       pa.removeChild(span);
+       i--;
+        }
+        
+      for (let i = 0; i < parrafos.length; i++) {
+        parrafos[i].removeAttribute('style');
+      }
+
+      for (let i = 0; i < iframecontent.length; i++){
+        iframecontent[i].classList.add("frames");
+      }
+      }, []);
 
 
     return(
@@ -29,22 +67,20 @@ function ArticleDetail({articulo}) {
                 <p className="bajada">{articulo.bajada}</p>
 
                 <div className="autores">
-                    {/*<span className="por">Por: </span><span className="autor">{articulo.autor}</span>
-                    {articulo.arte.length > 0 ? <><span className="por">| Arte: </span><span className="autor">{articulo.arte}</span></> : null}*/}
-                
-                <h4 className="por">Por: <span className="autor">{articulo.autor}</span></h4>
+                    <h4 className="por">Por: <span className="autor">{articulo.autor}</span></h4>
                     {articulo.arte.length > 0 ? <h4 className="por">| Arte: <span className="autor">{articulo.arte}</span></h4> : null}
                 </div>
             </div>
 
             <div className="imagenArticulo">
-                <img src={articulo.imagenprincipal} alt=""/>
+                <img src={renderImage} alt=""/>
             </div>
-
-            <div className="textoArticulo" dangerouslySetInnerHTML={{ __html: articulo.innerHtml }}/>
+            <Compartir articulo={articulo}/>
+            <div className="textoArticulo" id="textoArticulo" dangerouslySetInnerHTML={{ __html: articulo.innerHtml }}/>
             
             <div className="finalArt">
-            <p className="fechaArt">{(fechahumana).toLocaleDateString()}</p>
+            <p className="fechaArt">{!articulo.fecha ? fechahumana.toLocaleString('es-AR', dateOptions) 
+                                : miliseconds.toLocaleString('es-AR', dateOptions)}</p>
             <hr className="cierre" />
             <div className="catcontainer">{linksCat}</div>
             </div>

@@ -40,7 +40,7 @@ function Editnavbar() {
     return(
         <header>
             <div className='marca'>
-                <svg id='bondi' version="1.0" xmlns="http://www.w3.org/2000/svg"
+                {/*<svg id='bondi' version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="981.000000pt" height="980.000000pt" viewBox="0 0 981.000000 980.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <metadata>
@@ -80,7 +80,9 @@ function Editnavbar() {
                     427 -20 78 -21 212 -1 289 57 224 238 402 456 449 84 19 178 19 262 1z"/>
                     </g>
                     </svg>
-            <h1><Link to="/">altoBONDI</Link></h1>
+            <h1><Link to="/">altoBONDI</Link></h1>*/}
+            <Link to="/"><img src="/img/altobondi-NVB.png" alt="altobondi" className='isotipo'/></Link>
+
             </div>
             {/*}
             <div className="burger" onClick={handleClick}>

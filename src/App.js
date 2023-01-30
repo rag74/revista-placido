@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import './App.css';
-import './config'
-import ScrollToTop from './components/ScrollToTop';
-import Navbar from './components/Navbar/Navbar';
-import ArticleListContainer from './components/ArticleListContainer/ArticleListContainer';
-
+import './config';
 import Router from './pages/Router.jsx'
 import { UserAuthContextProvider } from './Context/UserAuthContext';
 
+
+
 function App() {
+
+
   return (
     <>
       <UserAuthContextProvider>

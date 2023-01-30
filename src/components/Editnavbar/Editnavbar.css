@@ -17,8 +17,9 @@ header {
 .marca {
   height: 70px;
   display: inline-flex;
-  align-items: center;
   font-size: 2.2rem;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
@@ -44,7 +45,7 @@ h1 {
 .navbutton {
   padding: 5px 10px;
   margin: 10px;
-  background-color: #B480E4;
+  background-color: #29D579;
   color: white;
   font-family: sans-serif;
   font-size: 14px;
@@ -52,7 +53,7 @@ h1 {
 }
 
 .navbutton:hover {
-  background-color: #9C6EDF;
+  background-color: #25ad65;
   cursor: pointer;
 }
 
@@ -68,7 +69,7 @@ h1 {
 }
 
 .burger :hover {
-  color: #da73ff;
+  color: #29D579;
   transition: color 0.5s;
 }
 
@@ -96,24 +97,6 @@ nav {
 .menunav {
   vertical-align: middle;
 }
-
-ul {
-  list-style: none;
-}
-
-li a {
-  color: #333;
-  transition: color 0.5s;
-  height: 70px;
-  line-height: 70px;
-}
-
-li a:hover {
-  cursor: pointer;
-  color: #da73ff;;
-  transition: color 0.5s;
-}
-
 
 
 .marca a {

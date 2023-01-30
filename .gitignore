@@ -24,3 +24,5 @@ yarn-error.log*
 
 # instalación tinyce
 /public/tinymce/
+# Local Netlify folder
+.netlify

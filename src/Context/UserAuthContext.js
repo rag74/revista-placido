@@ -20,6 +20,7 @@ export function UserAuthContextProvider(props) {
     const [user, setUser] = useState("");
     const history = useHistory();
     const [admin, setAdmin] = useState(false);
+    var estadoUser = "";
     console.log(permisos)
 
 
@@ -27,7 +28,7 @@ export function UserAuthContextProvider(props) {
         const localuser = JSON.parse(localStorage.getItem('localuser'));
         if (localuser) {
             setUser(localuser);
-            checkAdmin();
+            estadoUser = "seted"
         }
     }, []);
 
@@ -35,10 +36,25 @@ export function UserAuthContextProvider(props) {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             localStorage.setItem('localuser', JSON.stringify(currentUser)); //linea agregada
-            checkAdmin();
+            estadoUser = "changed"
         })
     }, []);
 
+
+    useEffect(() => {
+        checkAdmin();
+    }, [estadoUser]);
+
+
+
+    const checkAdmin = () => {
+        const localuser = JSON.parse(localStorage.getItem('localuser'));
+        //if (localuser.uid === "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") 
+        if (localuser != null) {
+            permisos.includes(localuser.uid) ? setAdmin(true) : setAdmin(false)
+        } else { setAdmin(false) }
+        console.log("CheckAdmin: " + admin)
+    }
 
     ///FUNCIONES DE LOGUEO Y REGISTRO DE USUARIOS FIREBASE
 
@@ -47,23 +63,13 @@ export function UserAuthContextProvider(props) {
     }
 
     function signUp(email, password) {
-
         return createUserWithEmailAndPassword(auth, email, password);
-
     }
 
     function logOut() {
         return signOut(auth);
-    }
-
-
-
-
-    const checkAdmin = () => {
-
-        const localuser = JSON.parse(localStorage.getItem('localuser'));
-        //if (localuser.uid === "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") 
-        permisos.includes(localuser.uid) ? setAdmin(true) : setAdmin(false)
+        localStorage.removeItem('localuser');
+        estadoUser = "deleted"
     }
 
 

@@ -1,3 +1,10 @@
+.frames {
+ width: 100% !important;
+ min-height: 160px !important;
+ display: flex;
+ margin: auto; 
+}
+
 .cabeceraArticulo {
     max-width: 1200px;
     margin:auto;
@@ -11,7 +18,7 @@
     margin:auto;
     margin-bottom: 40px;
     margin-top: 30px;
-    border-top: 3px solid rgb(180 128 228);
+    border-top: 3px solid #29d579;
 }
 
 .mainCategory {
@@ -20,7 +27,7 @@
     font-weight: bold;
     color: white;
     padding: 5px;
-    background-color: rgb(180, 128, 228);
+    background-color: #29d579;
     display: inline-block;
     margin: 20px 0 20px;
 }
@@ -66,7 +73,7 @@ span.autor {
 }
 
 h4.por{
-    color:blueviolet;
+    color:rgb(54, 185, 11);
     font-weight: bold;
 }
 
@@ -86,19 +93,42 @@ h4.por{
 }
 
 .textoArticulo p {
-    margin: 0 0 25px;
-    line-height: 1.5;
-    font-size: 16px;
+    /*margin: 0 0 25px !important;*/
+    line-height: 1.5 !important;
+    font-size: 16px !important;
 }
+
+
+.textoArticulo a {
+    /* margin: 0 0 25px !important; */
+    color: #29d579;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.textoArticulo a:visited {
+    /* margin: 0 0 25px !important; */
+    color: #369E56;
+}
+
 
 .textoArticulo img {
-    max-width: 100%;
-    margin: 0 0 25px;
+    width: 100% ;
+    height: auto;
 }
 
+.textoArticulo ul {
+    margin-left:10px;
+  }
+
+  .textoArticulo ul li {
+    list-style: inside;
+  }
+  
 .finalArt {
     font-size: 16px;
     padding: 0 10px 0 10px;
+    margin-top: 20px;
 }
 
 .cierre {
@@ -106,7 +136,7 @@ h4.por{
         text-align: center;
         margin:auto;
 
-        border-top: 2px solid rgb(180 128 228);
+        border-top: 2px solid #29d579;
 
 }
 
@@ -116,14 +146,14 @@ h4.por{
     margin:auto;
     text-align: right;
     padding: 5px;
-    color:blueviolet;
+    color:rgb(54, 185, 11);
     font-weight: bold;
 }
 .catLink {
     font-family: 'Raleway', sans-serif;
     display: inline-block;
     padding: 5px;
-    color:blueviolet;
+    color:rgb(54, 185, 11);
     font-weight: bold;
     cursor: pointer;
     margin: auto;
@@ -133,7 +163,7 @@ h4.por{
 
 
 .catLink a {
-    color:blueviolet;
+    color:rgb(54, 185, 11);
 }
 
 .catcontainer {
@@ -150,7 +180,9 @@ h4.por{
 ////////////////////////////////////
  */
  @media (min-width: 800px) {
-    .mainCategory {
+
+
+   .textoArticulo p.miclase {
         font-size: 14px;
     }
 
@@ -177,7 +209,7 @@ h4.por{
     }
 
     .textoArticulo p {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     .finalArt {
@@ -191,6 +223,11 @@ h4.por{
 ////////////////////////////////////
  */
  @media (min-width: 1024px) {
+    .miclase {
+        font-size: 16px !important;
+        font-family: 'Roboto', sans-serif !important;
+        color:red;
+    }
 
     .cabeceraArticulo {
         max-width: 1200px;
@@ -205,7 +242,7 @@ h4.por{
         margin:auto;
         margin-bottom: 40px;
         margin-top: 30px;
-        border-top: 3px solid rgb(180 128 228);
+        border-top: 3px solid #29d579;
     }
     
     .mainCategory {
@@ -214,7 +251,6 @@ h4.por{
         font-weight: bold;
         color: white;
         padding: 5px;
-        background-color: rgb(180, 128, 228);
         display: inline-block;
         margin: 20px 0 20px;
     }
@@ -252,7 +288,7 @@ h4.por{
     }
     
     h4.por{
-        color:blueviolet;
+        color:rgb(54, 185, 11);
         font-weight: bold;
     }
     
@@ -272,9 +308,9 @@ h4.por{
     }
     
     .textoArticulo p {
-        margin: 0 0 25px;
-        line-height: 1.5;
-        font-size: 20px;
+        /*margin: 0 0 25px !important;*/
+        line-height: 1.5 !important;
+        font-size: 20px !important;
     }
     
     .finalArt {
@@ -286,7 +322,7 @@ h4.por{
             text-align: center;
             margin:auto;
     
-            border-top: 2px solid rgb(180 128 228);
+            border-top: 2px solid #29d579;
     
     }
     
@@ -297,14 +333,14 @@ h4.por{
         margin:auto;
         text-align: right;
         padding: 5px;
-        color:blueviolet;
+        color:rgb(54, 185, 11);
         font-weight: bold;
     }
     .catLink {
         font-family: 'Raleway', sans-serif;
         display: inline-block;
         padding: 5px;
-        color:blueviolet;
+        color:rgb(54, 185, 11);
         font-weight: bold;
         cursor: pointer;
         margin: auto;
@@ -314,7 +350,7 @@ h4.por{
     
     
     .catLink a {
-        color:blueviolet;
+        color:rgb(54, 185, 11);
     }
     
     .catcontainer {

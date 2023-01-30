@@ -1,6 +1,6 @@
+import React from 'react';
 import {
     BrowserRouter,
-    Switch,
     Route,
   } from "react-router-dom";
 
@@ -15,31 +15,24 @@ import Editnavbar from "../components/Editnavbar/Editnavbar.jsx";
 import CreateArticle from "../components/CreateArticle/CreateArticle.jsx";
 import Login from "../components/Login/Login.jsx";
 import PanelContainer from "../components/PanelContainer/PanelContainer.jsx";
+import Somos from "../components/Somos/Somos.jsx";
 import { ProtectedRoute } from "../components/ProtectedRoute.js";
 
 
 
-/// COMPONENTES DE EDITORES ///
-import EditorWYSIWYG from "../components/Testing/EditorWYSIWYG";
-
-import Tinymcenew from "../components/Testing/Tinymcenew";
-
-
-/////////////
-
-//import Contacto from '../components/Contacto/Contacto.jsx'
 
 //import NotFound from './errors/NotFound.jsx'
   
   function Router() {
+  
+  //
+
 
     return(
 
-      
         <BrowserRouter>
         <ScrollToTop>
-            
-
+      
                 <Route path='/' exact> 
                  <Navbar/>
                   <ArticleListContainer />
@@ -59,14 +52,22 @@ import Tinymcenew from "../components/Testing/Tinymcenew";
                   <Footer />
                 </Route>
 
-              {/*
-                <Route path='/contacto' exact>
-                  <Contacto />
+
+                <Route path='/preview/:id' exact>
+                 <Editnavbar />
+                  <ArticleDetailContainer />
+                  <Footer />
                 </Route>
 
+              {/*
                 <Route component={NotFound} />
                 */}
 
+              <Route path='/quienessomos' exact>
+                <Navbar/>
+                <Somos />
+                <Footer />
+              </Route>
           
             
               <Route path='/login' exact>

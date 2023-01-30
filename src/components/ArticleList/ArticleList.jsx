@@ -16,10 +16,10 @@ if(categoria == null) {
 }
 
 
-const [loopNum, setloopNum] = useState(3)
+const [loopNum, setloopNum] = useState(6)
 
 const loadMore = ()=> {
-    if (loopNum < articulos.length) {setloopNum(loopNum+3)}
+    if (loopNum < articulos.length) {setloopNum(loopNum+6)}
 };
 
 
@@ -50,6 +50,7 @@ const loadMore = ()=> {
                                                     autor={article.autor}
                                                     arte={article.arte}
                                                     imagenprincipal={article.imagenprincipal}
+                                                    imagenprincipal640={article.imagenprincipal640}
                                                     article={article}
                                                     maincategory={article.maincategory}
                                                     id={article.articleID}
@@ -57,7 +58,7 @@ const loadMore = ()=> {
                                         })
                     }
                 </div>
-                <div className={(loopNum<articulos.length) ? "more" : "hidden" } onClick={()=>loadMore()}><p>cargar mas...</p></div>
+                <div className={(loopNum<articulos.length) ? "more" : "hidden" } onClick={()=>loadMore()}><p>cargar más...</p></div>
             </div>
         }
         </div>

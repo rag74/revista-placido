@@ -5,7 +5,7 @@ import Carrusel from '../Carrusel/Carrusel';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
 import {useUserAuth} from '../../Context/UserAuthContext';
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
 
@@ -21,7 +21,11 @@ function ArticleListContainer() {
     const [articulos, setArticulos] = useState([]);
     const [loading, setLoading] = useState(true);
    
-    //
+/*    const location = useLocation();
+
+    useEffect(() => {
+      console.log('Location changed');
+    }, [location]);*/
   
     useEffect(() => {
 
