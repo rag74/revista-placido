@@ -87,7 +87,7 @@ function Editnavbar() {
             {/*}
             <div className="burger" onClick={handleClick}>
                 <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-            </div>
+            </div> 
             */}
             {user && <div className='navUser'>
                         <div className='usermail'>({user.email})</div>
