@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./ArticleListContainer.css";
 import ArticleList from '../ArticleList/ArticleList';
 import Carrusel from '../Carrusel/Carrusel';
+import Especial from '../Especial/Especial';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
 import {useUserAuth} from '../../Context/UserAuthContext';
@@ -69,11 +70,15 @@ function ArticleListContainer() {
             {categoria!=null ?
                 <h1 className="tituloseccion"> {categoria.toLowerCase()} </h1> 
                 : 
-                
-                 <Carrusel articulos={articulos}
-                            loading={loading}   
-                />
-                
+                <>
+                    <Carrusel articulos={articulos}
+                                loading={loading}   
+                    />
+
+                    <Especial articulos={articulos}
+                                loading={loading}
+                                />
+                </>
              }
              </div>   
 

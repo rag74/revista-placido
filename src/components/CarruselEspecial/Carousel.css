@@ -1,0 +1,38 @@
+.carousel {
+  overflow: hidden;
+}
+
+.inner-esp {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-item-esp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  width: 100%;
+  background-color: rgb(71, 172, 71);
+  color: #ec4141
+}
+
+.indicators-esp {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators-esp > button {
+  margin: 5px;
+}
+
+.indicators-esp > button.active {
+  background-color: green;
+  /*color: #fff;*/
+  color: #ec4141
+}
+
+.indicatorsDots-esp {
+  display: flex;
+  justify-content: center;
+}

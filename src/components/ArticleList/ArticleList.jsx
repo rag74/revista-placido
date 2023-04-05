@@ -5,7 +5,7 @@ import Article from '../Article/Article'
 
 import { useParams } from "react-router-dom";
 
-
+ 
 
 function ArticleList ({articulos, loading}) {
 
@@ -13,7 +13,10 @@ const {categoria} = useParams();
 
 if(categoria == null) {
     articulos = articulos.filter(articulos => articulos.carrousel === false );
+    //COMENTAR CONDICION ESPECIAL
+    articulos = articulos.filter(articulos => !articulos.categories.includes('especialmalvinas'));
 }
+
 
 
 const [loopNum, setloopNum] = useState(6)

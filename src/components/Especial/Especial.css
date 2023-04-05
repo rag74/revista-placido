@@ -1,0 +1,70 @@
+.seccionEspecial {
+    min-height: 350px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 40px;
+    padding-top: 35px;
+    background-color: rgb(71, 172, 71);
+   
+}
+
+.seccionEspecial h1 {
+    font-family: "Anton", sans-serif;
+    font-size: 40px;
+    line-height: 55px;
+    color: white;
+    text-shadow: 4px 4px 3px rgb(0, 0, 0,0.6);
+}
+
+.seccionEspecial h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.6);
+    padding: 5px;
+    padding-bottom: 15px;
+}
+
+.esp-grilla-art-esp {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .more-esp {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-family: "Fjalla One", sans-serif;
+    font-size: 0.9rem;
+    padding: 5px;
+    margin: 0 10px 10px 10px;
+
+  }
+
+  .more-esp:hover {
+    display: inline-block;
+    background: rgb(114 114 114);
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+
+@media (min-width: 800px) {
+    .seccionEspecial {  
+       
+        margin-top: 40px;
+    }
+
+    .seccionEspecial h1 {
+        font-size: 60px;
+    }
+
+    .seccionEspecial h3 {
+        font-size: 20px;
+        padding: 15px
+    }
+}
