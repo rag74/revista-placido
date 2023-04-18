@@ -4,13 +4,13 @@ import EspecialArticle from '../EspecialArticle/EspecialArticle';
 import Carrusel from '../CarruselEspecial/Carrusel'
 import { useEffect } from 'react';
 
-function Especial ({articulos, loading}){
+function Especial ({articulos, loading, special}){
 
     const width = window.innerWidth;
     console.log(width)
 
     articulos = articulos.filter(articulos => articulos.carrousel === false );
-    articulos = articulos.filter(articulos => articulos.categories.includes('especialmalvinas'));
+    articulos = articulos.filter(articulos => articulos.categories.includes(special.hashtag));
     console.log(articulos.length)
 
     const [loopNum, setloopNum] = useState(articulos.length)
@@ -33,9 +33,9 @@ function Especial ({articulos, loading}){
     
     <div className='contenedor'>
         {!loading &&
-        <section className='seccionEspecial'>
-            <h1>Especial Malvinas</h1>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</h3>
+        <section className='seccionEspecial' style={{backgroundColor: special.color}}>
+            <h1>{special.titulo}</h1>
+            <h3>{special.bajada}</h3>
 
            {/* <Carrusel articulos={articulos} />*/}
 
@@ -52,6 +52,7 @@ function Especial ({articulos, loading}){
                                                     article={article}
                                                     maincategory={article.maincategory}
                                                     id={article.articleID}
+                                                    special={special}
                                                 />
                                         })
                     }

@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useRef } from "react";
 import ".//ArticleDetail.css";
 import Compartir from "../Compartir/Compartir";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-//import { useEffect } from "react";
 
 
 function ArticleDetail({articulo}) {
 
     console.log(articulo);
+
+    const componentRef = useRef();
 
     const linksCat = articulo.categories.map((cat)=>(
         <div key={cat} className="catLink">
@@ -58,7 +59,8 @@ function ArticleDetail({articulo}) {
 
 
     return(
-       <section> 
+      <>
+       <section ref={componentRef}> 
             <div className="cabeceraArticulo">
                 <p className="mainCategory"><Link to={`/category/${articulo.maincategory}`}>{articulo.maincategory}</Link></p>
                 <p className="volanta">{articulo.volanta}</p>
@@ -75,7 +77,7 @@ function ArticleDetail({articulo}) {
             <div className="imagenArticulo">
                 <img src={renderImage} alt=""/>
             </div>
-            <Compartir articulo={articulo}/>
+            <Compartir articulo={articulo} componentRef={componentRef}/>
             <div className="textoArticulo" id="textoArticulo" dangerouslySetInnerHTML={{ __html: articulo.innerHtml }}/>
             
             <div className="finalArt">
@@ -84,8 +86,8 @@ function ArticleDetail({articulo}) {
             <hr className="cierre" />
             <div className="catcontainer">{linksCat}</div>
             </div>
-            
         </section>
+        </>
     );
 }
 

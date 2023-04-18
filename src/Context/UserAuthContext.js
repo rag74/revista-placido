@@ -8,7 +8,7 @@ import {
     onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase/index";
-import { doc, setDoc, updateDoc, getDoc } from '@firebase/firestore';
+import { collection, doc, setDoc, updateDoc, getDoc, deleteDoc, getDocs } from '@firebase/firestore';
 import db from '../firebase'
 import { permisos } from "../data/permisos";
 
@@ -20,6 +20,8 @@ export function UserAuthContextProvider(props) {
     const [user, setUser] = useState("");
     const history = useHistory();
     const [admin, setAdmin] = useState(false);
+    const [specialExist, setSpecialExist] = useState(false)
+    //const [special, setSpecial] = useState();
     var estadoUser = "";
     console.log(permisos)
 
@@ -41,9 +43,27 @@ export function UserAuthContextProvider(props) {
     }, []);
 
 
+useEffect(() => {
+    async function getSpecial(){
+        let specialExist
+        const docRef = doc(db, "especial", "especialprincipal");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+           setSpecialExist(true)
+        } else {
+           setSpecialExist(false)
+        }
+        
+    }
+    getSpecial()
+}, []);
+
     useEffect(() => {
         checkAdmin();
     }, [estadoUser]);
+
+
 
 
 
@@ -96,6 +116,36 @@ export function UserAuthContextProvider(props) {
             console.log(err);
             alert(err);
         }
+    }
+
+    const guardarEspecial = async (especialData) => {
+        console.log(especialData) 
+
+        try {
+            await setDoc(doc(db, "especial", "especialprincipal"), especialData);
+            console.log('subido!');
+            setSpecialExist(true)
+            //let element = document.getElementById("miModal");
+            //element.classList.add("ver");
+        } catch (err) {
+
+            console.log(err);
+            alert(err);
+        }
+        //setSpecial(especialData)
+    }
+
+    const borrarEspecial = async ()=> {
+        try { 
+            await deleteDoc(doc(db, "especial", "especialprincipal"));
+            console.log('borrado!');
+            setSpecialExist(false)
+        } catch (err) {
+
+            console.log(err);
+            alert(err);
+        }
+        //setSpecial()
     }
 
     const eliminarArticulo = async (articleID) => {
@@ -197,16 +247,19 @@ export function UserAuthContextProvider(props) {
             signUp,
             generateID,
             guardarBorrador,
+            guardarEspecial,
+            borrarEspecial,
             setearCarrousel,
             eliminarArticulo,
             revisarArticulo,
             publicarArticulo,
             checkAdmin,
+            specialExist,
             permisos,
             admin,
         })
 
-    }, [user])
+    }, [user,specialExist])
 
 
     return <userAuthContext.Provider value={value} {...props} />

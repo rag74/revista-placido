@@ -24,11 +24,10 @@ function ArticleDetailContainer() {
         const querySnapshot = await getDocs(q);
       querySnapshot.forEach(item => {arr.push(item.data())})
       setArticulo(arr);
+      document.title = "Altobondi - "+arr[0].title;
       setLoading(false);
       }
-
       getArticulo()
-
   },[]);
 
   console.log(articulo);

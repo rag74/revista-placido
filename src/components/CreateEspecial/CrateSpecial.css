@@ -1,0 +1,82 @@
+.datosespecial {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.datosespecial input  {
+    padding: 0 1px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+}
+
+.datosespecial textarea  {
+    padding: 1px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    height: 50px;
+}
+
+input::placeholder {
+    font-size: 13px;
+    font-family: "Roboto", sans-serif;
+}
+
+textarea::placeholder {
+    font-size: 13px;
+    font-family: "Roboto", sans-serif;
+}
+
+
+span.tituloEsp {
+ width: 25%;
+}
+
+#tituloespecial {
+    width: 25%;
+}
+
+
+span.bajadaEsp {
+width: 35%;
+}
+
+#bajadadespecial {
+    width: 35%;
+    resize: none;
+    overflow: hidden;
+    margin: 0 2px;
+    padding: 3px 0;
+}
+
+span.hashtagEsp {
+    width: 15%;
+}
+
+#hashtagespecial {
+    width: 15%;
+}
+
+span.coloresp {
+    width: 6%;
+}
+
+#colorespecial {
+    border: 0;
+    width: 5%;
+}
+.createEspecial input {
+  margin-left: 1px;
+  height: 25px;
+}
+
+.buttonRowEsp {
+    margin-top: 2px;
+}
+
+
+.error2 {
+    border: solid red;
+}

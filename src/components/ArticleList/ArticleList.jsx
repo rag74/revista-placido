@@ -4,17 +4,22 @@ import { Link } from 'react-router-dom';
 import Article from '../Article/Article'
 
 import { useParams } from "react-router-dom";
-
+import { useUserAuth } from '../../Context/UserAuthContext';
  
 
-function ArticleList ({articulos, loading}) {
+function ArticleList ({articulos, loading,special}) {
 
 const {categoria} = useParams();
+const {specialExist} = useUserAuth();
+console.log("existe especial en listado?")
+console.log(specialExist)
 
 if(categoria == null) {
     articulos = articulos.filter(articulos => articulos.carrousel === false );
     //COMENTAR CONDICION ESPECIAL
-    articulos = articulos.filter(articulos => !articulos.categories.includes('especialmalvinas'));
+    if (specialExist){
+    articulos = articulos.filter(articulos => !articulos.categories.includes(special.hashtag));
+    }
 }
 
 

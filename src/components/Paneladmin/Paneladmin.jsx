@@ -8,14 +8,21 @@ import { collection, query, getDocs, where } from 'firebase/firestore';
 import db from '../../firebase';
 import Updating from '../Updating/Updating';
 import CreateUser from '../CreateUser/CreateUser';
+import CreateEspecial from '../CreateEspecial/CreateEspecial';
 
-function Paneladmin({articulos, loading}) {
+function Paneladmin({articulos, loading, special}) {
 
+
+  const {admin , revisarArticulo, guardarEspecial, eliminarArticulo, publicarArticulo, borrarEspecial, specialExist} = useUserAuth();
   console.log("PANEL ADMIN");
+ 
 
-  const {admin , revisarArticulo, eliminarArticulo, publicarArticulo} = useUserAuth();
-  console.log("admin?: "+admin);
 
+  console.log("Panel Admin: admin + special")
+  console.log(admin);
+  console.log(special)
+  console.log("Document panelcontainer existe?");
+  console.log(specialExist);
     ///VARIABLES MODAL//
     const [modaltitle, setModaltitle] = useState('');
     const [modalmessage, setModalmessage] = useState('');
@@ -25,6 +32,8 @@ function Paneladmin({articulos, loading}) {
     const [updating , setUpdating] = useState(false)
 
   console.log(articulos);
+  console.log("a ver");
+  console.log();
   const localuser = JSON.parse(localStorage.getItem('localuser'))
   const localeID = localuser.uid;
   console.log(localeID);
@@ -141,6 +150,24 @@ const verCreateUser = ()=> { var elemento = document.getElementById("create-user
                             elemento.classList.remove("none");
                         }
 
+const verCreateEspecial = ()=> { var elemento = document.getElementById("create-especial");
+                        elemento.classList.remove("none");
+                    }
+
+const hideCreateEspecial = ()=> { let elemento = document.getElementById("create-especial");
+                    elemento.classList.add("none");
+                    document.getElementById("tituloespecial").value="";
+                    document.getElementById("hashtagespecial").value="";
+                    document.getElementById("bajadadespecial").value="";
+                    };
+
+const borrarSpecialCollection = async ()=> { 
+                      setUpdating(true)
+                      await borrarEspecial()
+                      setUpdating(false)
+                      hideCreateEspecial()
+                     }
+
   return (
     <>
      
@@ -151,12 +178,25 @@ const verCreateUser = ()=> { var elemento = document.getElementById("create-user
         <div className="panel">
           <div className="panel-header">
             <Link to="/crear"><div className='buttonNew'>Crear entrada</div></Link>
-            <div className='buttonNew' onClick={verCreateUser}>Crear usuario</div>
+
+            {specialExist ?
+                  <div className='buttonNew' onClick={borrarSpecialCollection}>Eliminar especial</div>
+                  :
+                  <div className='buttonNew' onClick={verCreateEspecial}>Crear especial</div>
+              }
             
+            <div className='buttonNew' onClick={verCreateUser }>Crear usuario</div>
+
             <div id="create-user" className='none'>
              <CreateUser/>
             </div>    
          </div>
+
+         {loading ? <></> :
+              <div id="create-especial" className={specialExist ? "" : "none"}>
+                <CreateEspecial special={special}/>
+              </div>
+          }
 
          {pendientes && 
               <div className="panel-tabla">

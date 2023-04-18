@@ -9,9 +9,9 @@ import { useUserAuth } from "../../Context/UserAuthContext";
 function Switchcarrousel({carrousel , articleID}) {
 
     
-    console.log("dentro del switch");
+    /*console.log("dentro del switch");
     console.log(carrousel);
-    console.log(articleID);
+    console.log(articleID);*/
 
     const [checked, setChecked] = useState("false");
 
