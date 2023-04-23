@@ -159,6 +159,11 @@ const hideCreateEspecial = ()=> { let elemento = document.getElementById("create
                     document.getElementById("tituloespecial").value="";
                     document.getElementById("hashtagespecial").value="";
                     document.getElementById("bajadadespecial").value="";
+
+                    document.getElementById("tituloespecial").disabled = false;
+                    document.getElementById("bajadadespecial").disabled = false;
+                    document.getElementById("hashtagespecial").disabled = false;
+                    document.getElementById("colorespecial").disabled = false;
                     };
 
 const borrarSpecialCollection = async ()=> { 
@@ -167,6 +172,7 @@ const borrarSpecialCollection = async ()=> {
                       setUpdating(false)
                       hideCreateEspecial()
                      }
+
 
   return (
     <>

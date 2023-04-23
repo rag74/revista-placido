@@ -8,13 +8,12 @@ function CreateEspecial({special}) {
 
   const [buttonEstado, setButtonEstado] = useState(true)
   const [dataOld, setDataOld] = useState()
+  const {guardarEspecial, borrarEspecial, specialExist} = useUserAuth();
+  const [updating , setUpdating] = useState(false)
 
     console.log("PANEL ESPECIAL")
     console.log(special)
-
-    const {guardarEspecial, borrarEspecial} = useUserAuth();
-    const [updating , setUpdating] = useState(false)
-
+    console.log(specialExist)
 
 
 
@@ -46,8 +45,6 @@ function CreateEspecial({special}) {
         document.getElementById("bajadadespecial").disabled = true;
         document.getElementById("hashtagespecial").disabled = true;
         document.getElementById("colorespecial").disabled = true;
-
- 
       } 
     }, [])
     
@@ -69,6 +66,7 @@ function CreateEspecial({special}) {
                                 document.getElementById("hashtagespecial").value="";
                                 document.getElementById("bajadadespecial").value="";  
                                 document.getElementById("colorespecial").value="#0000";
+
                                 };
 
     const checkEspecial = ()=> {
@@ -169,7 +167,7 @@ function CreateEspecial({special}) {
                     <textarea placeholder='bajadad especial' name="bajadadespecial" id="bajadadespecial" maxlength="300"  onChange={(e)=> setnewBajadadespecial(e.target.value)} />
                     <input type="text" placeholder='hashtag del especial' name="hashtagespecial" id="hashtagespecial" onChange={(e)=> setnewHashtagespecial(e.target.value)} onFocus={removeError} />
                     <input type="color" id="colorespecial" name="colorespecial"  onChange={(e)=>setnewColorespecial(e.target.value)} />
-                   { buttonEstado ?  
+                   { buttonEstado && specialExist ?  
                     <button className='buttonRowEsp' onClick={modificarEspecial}>modificar</button>
                     :
                     <>
