@@ -24,7 +24,7 @@ function Compartir({articulo, componentRef}) {
     <div className='compartir'> 
         <i class="fa-solid fa-share-nodes"></i>
 
-       <a href={`https://twitter.com/intent/tweet?text=Revista Altobondi📢 ${articulo.title} - ${window.location.href}/`} target="_blank"><i class="fa-brands fa-twitter share"></i></a> 
+       <a href={`https://twitter.com/intent/tweet?text=Revista Altobondi📢 ${articulo.title} - ${window.location.href}/`} target="_blank"><i class="fa-brands fa-x-twitter share"></i></a> 
     
         <a href={`https://api.whatsapp.com/send?text=Revista Altobondi: ${articulo.title} - ${window.location.href}/`}><i class="fa-brands fa-whatsapp share"></i></a>
 

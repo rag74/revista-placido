@@ -87,6 +87,7 @@ function Paneladmin({articulos, loading, special}) {
     setUpdating(false)
 }
 
+ 
 
   const tablaPendientes = pendientes.map(item => (
     <div key={item.articleID}>

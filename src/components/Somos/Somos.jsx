@@ -32,33 +32,31 @@ function Somos() {
     </section>
     <hr className='divisor'/>
     <section className='creditos'>
-        <h3>Equipo de trabajo ALTOBONDI 2022:</h3>
+        <h3>Equipo de trabajo ALTOBONDI 2023:</h3>
         
         <span>Coordinadoras generales:</span>
-        <p>Kiara Angeleri (4° año) y Maite Saraví (5° año)</p>
+        <p>Wayra Valdez y Sara Plenovich</p>
 
-        <span>Responsable de edición:</span>
-        <p>Kiara Angeleri</p>
-
-        <span>Equipo de edición:</span>
-        <p>Aylen Rivera (5° año)</p>
-        <p>Lautaro Butta (5° año)</p>
-        <p>Melany Palacios (5° año)</p>
-        <p>Michelle Bourgeat (4° año)</p>
-         
-        <span>Responsables de diseño y redes sociales:</span>
-        <p>Maite Saraví y Matías Gorosito (4° año)</p>
+        <span>Responsables de edición:</span>
+        <p>Malena Cabrera y Yolanda Próspero </p>
 
         <span>Equipo de trabajo de diseño y redes sociales:</span>
-        <p>Antonia Petrosini (4° año)</p>
-        <p>Lara Draghi (5° año)</p>
-        <p>Delfina Ferreyra (5° año)</p>
-        <p>Máximo Barone (4° año)</p>
+        <p>Sara Plenovich</p>
+        <p>Abril Angeleri</p>
+        <p>Agustina Alegre</p>
+        <p>Candela Caponeto</p>
+        <p>Uma Avila</p>
 
         <span>Equipo de redacción:</span>
-        <p>Antonia Petrosini (4° año)</p>
-        <p>Carolina Russo (5° año)</p>
-        <p>Fabrizio Cañete (5° año)</p>
+        <p>Matias Valiero</p>
+        <p>Tiziana Esquivel</p>
+        <p>Lucio Ambrossio</p>
+        <p>Mateo Imberlina</p>
+        <p>Giuliano Giufridda</p>
+        <p>Victoria Jara</p>
+        <p>Nahiara Rojo</p>
+        <p>Morena Avedikián</p>
+
         
         <span>Coordinadores docentes:</span>
         <p>Nora Sarda y Sebastián Gabriel Di Giorgio</p>
@@ -66,7 +64,7 @@ function Somos() {
         <span>Colaboradores docentes:</span>
         <p>Juan Aladro</p>
 
-        <span>Diseño y programación web:</span>
+        <span>Diseño de revista y programación web:</span>
         <img className='logorag' src="/img/poligonorag.png" alt="logo RAG" />
 
 
