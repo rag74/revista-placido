@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useUserAuth } from "../../Context/UserAuthContext";
 
 
-function Switchcarrousel({carrousel , articleID}) {
+function Switchcarrousel({carrousel , articleID, permisos}) {
 
     
     /*console.log("dentro del switch");
@@ -16,6 +16,9 @@ function Switchcarrousel({carrousel , articleID}) {
     const [checked, setChecked] = useState("false");
 
     const {setearCarrousel} = useUserAuth();
+
+    const localuser = JSON.parse(localStorage.getItem('localuser'))
+    
 
     useEffect(() => {
         setChecked(carrousel)
@@ -28,10 +31,6 @@ function Switchcarrousel({carrousel , articleID}) {
       
     };
 
-  /*  useEffect(() => {
-        console.log("cambio checked" + checked);
-        setearCarrousel(articleID, checked);
-    }, [checked]);*/
   
     return (
 
@@ -41,6 +40,7 @@ function Switchcarrousel({carrousel , articleID}) {
             height={18}
             width={40}
             className="react-switch"
+            disabled={permisos.includes(localuser.uid) ? false : true }
           />
 
     );

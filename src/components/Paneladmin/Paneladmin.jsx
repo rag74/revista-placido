@@ -10,7 +10,7 @@ import Updating from '../Updating/Updating';
 import CreateUser from '../CreateUser/CreateUser';
 import CreateEspecial from '../CreateEspecial/CreateEspecial';
 
-function Paneladmin({articulos, loading, special}) {
+function Paneladmin({articulos, loading, special, permisos}) {
 
 
   const {admin , revisarArticulo, guardarEspecial, eliminarArticulo, publicarArticulo, borrarEspecial, specialExist} = useUserAuth();
@@ -98,8 +98,19 @@ function Paneladmin({articulos, loading, special}) {
         <span className='fecha'>{(item.creado).toDate().toLocaleDateString()}</span>
         <span className='estado'>{item.estado}</span>
         <span className='revisar'>
+        {permisos.includes(localuser.uid) ? 
         <Link to={`/editar/${item.articleID}`}><button className='buttonRow'>revisar</button></Link>
+          : localuser.uid == item.editor  &&
+        <Link to={`/editar/${item.articleID}`}><button className='buttonRow'>editar</button></Link>
+        }
+
+        {!permisos.includes(localuser.uid) &&
+        <Link to={`/preview/${item.articleID}`}><button className='buttonRow'>ver</button></Link>
+        }
+
+        {permisos.includes(localuser.uid) &&
         <button className='buttonRow' onClick={()=>handleEliminar(item.articleID)} >eliminar</button>
+        }
         </span>
       </div>
       <hr />
@@ -114,11 +125,15 @@ function Paneladmin({articulos, loading, special}) {
         <span className='editor1'>{item.editormail}</span>
         <span className='fecha'>{(item.fecha).toDate().toLocaleDateString()}</span>
         <span className='estado'>{item.estado}</span>
-        <span className='carrusel'><Switchcarrousel carrousel={item.carrousel} articleID={item.articleID} /></span>
+        <span className='carrusel'><Switchcarrousel carrousel={item.carrousel} articleID={item.articleID} permisos={permisos} /></span>
         <span className='revisar'>
+        {permisos.includes(localuser.uid) &&
         <Link to={`/editar/${item.articleID}`}><button className='buttonRow'>editar</button></Link>
+        }
         <Link to={`/article/${item.articleID}`}><button className='buttonRow'>ver</button></Link>
+        {permisos.includes(localuser.uid) &&
         <button className='buttonRow' onClick={()=>handleEliminar(item.articleID)} >eliminar</button>
+        }
         </span>
       </div>
       <hr />
@@ -135,7 +150,9 @@ function Paneladmin({articulos, loading, special}) {
       <span className='estado'>{item.estado}</span>
       <span className='revisar'>
       <Link to={`/editar/${item.articleID}`}><button className='buttonRow'>editar</button></Link>
+      {permisos.includes(localuser.uid) &&
       <button className='buttonRow' onClick={()=>handlePublicar(item.articleID)} >publicar</button>
+      }
       <button className='buttonRow' onClick={()=>handleEliminar(item.articleID)} >eliminar</button>
         </span>
     </div>
@@ -179,20 +196,25 @@ const borrarSpecialCollection = async ()=> {
     <>
      
       <div className='panelContainer'>
-        <h1>Panel administrador</h1>
+      {permisos.includes(localuser.uid) ? 
+        <h1>Panel administrador</h1> : <h1>Panel usuario</h1> }
         
 
         <div className="panel">
           <div className="panel-header">
             <Link to="/crear"><div className='buttonNew'>Crear entrada</div></Link>
 
-            {specialExist ?
+            {!permisos.includes(localuser.uid) ? <div></div> :
+            specialExist ?
                   <div className='buttonNew' onClick={borrarSpecialCollection}>Eliminar especial</div>
                   :
                   <div className='buttonNew' onClick={verCreateEspecial}>Crear especial</div>
-              }
+              
+            }
             
+            {permisos.includes(localuser.uid) &&
             <div className='buttonNew' onClick={verCreateUser }>Crear usuario</div>
+            }
 
             <div id="create-user" className='none'>
              <CreateUser/>
