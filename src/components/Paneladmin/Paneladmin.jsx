@@ -223,7 +223,7 @@ const borrarSpecialCollection = async ()=> {
 
          {loading ? <></> :
               <div id="create-especial" className={specialExist ? "" : "none"}>
-                <CreateEspecial special={special}/>
+                <CreateEspecial special={special} permisos={permisos}/>
               </div>
           }
 

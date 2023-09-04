@@ -4,12 +4,14 @@ import {useUserAuth} from '../../Context/UserAuthContext';
 import Updating from '../Updating/Updating';
 import { useEffect } from 'react';
 
-function CreateEspecial({special}) {
+function CreateEspecial({special, permisos}) {
 
   const [buttonEstado, setButtonEstado] = useState(true)
   const [dataOld, setDataOld] = useState()
   const {guardarEspecial, borrarEspecial, specialExist} = useUserAuth();
   const [updating , setUpdating] = useState(false)
+
+  const localuser = JSON.parse(localStorage.getItem('localuser'))
 
     console.log("PANEL ESPECIAL")
     console.log(special)
@@ -158,8 +160,9 @@ function CreateEspecial({special}) {
                       <span className='bajadaEsp'>Bajada</span>
                       <span className='hashtagEsp'>#Hashtag</span>
                       <span className='coloresp'>Color</span>
-                      <span className='publicaresp'>Acciones</span>
-                      <span className='accion'></span>
+                      {permisos.includes(localuser.uid) &&
+                      <span className='accion'>Acciones</span>
+                      }
                     </div>
               </div>     
                 <div className='datosespecial'>
@@ -167,7 +170,7 @@ function CreateEspecial({special}) {
                     <textarea placeholder='bajadad especial' name="bajadadespecial" id="bajadadespecial" maxlength="300"  onChange={(e)=> setnewBajadadespecial(e.target.value)} />
                     <input type="text" placeholder='hashtag del especial' name="hashtagespecial" id="hashtagespecial" onChange={(e)=> setnewHashtagespecial(e.target.value)} onFocus={removeError} />
                     <input type="color" id="colorespecial" name="colorespecial"  onChange={(e)=>setnewColorespecial(e.target.value)} />
-                   { buttonEstado && specialExist ?  
+                   { buttonEstado && specialExist ?  permisos.includes(localuser.uid) &&
                     <button className='buttonRowEsp' onClick={modificarEspecial}>modificar</button>
                     :
                     <>
