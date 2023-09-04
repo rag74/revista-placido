@@ -532,7 +532,7 @@ function uploadMain(e) {
                             
                             <div className='buttonNew2' onClick={handleGuardar}>Guardar cambios</div>
                             
-                            {!admin && estado === "borrador" &&
+                            {estado === "borrador" &&
                             <div className='buttonNew2' onClick={handleRevisar}>Solicitar publicacion</div>
                             }
 
