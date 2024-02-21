@@ -204,6 +204,8 @@ const borrarSpecialCollection = async ()=> {
           <div className="panel-header">
             <Link to="/crear"><div className='buttonNew'>Crear entrada</div></Link>
 
+        {localuser.uid == "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2" && 
+          <>
             {!permisos.includes(localuser.uid) ? <div></div> :
             specialExist ?
                   <div className='buttonNew' onClick={borrarSpecialCollection}>Eliminar especial</div>
@@ -215,17 +217,23 @@ const borrarSpecialCollection = async ()=> {
             {permisos.includes(localuser.uid) &&
             <div className='buttonNew' onClick={verCreateUser }>Crear usuario</div>
             }
-
+     
             <div id="create-user" className='none'>
              <CreateUser/>
-            </div>    
+            </div> 
+            </>
+        }
          </div>
 
-         {loading ? <></> :
-              <div id="create-especial" className={specialExist ? "" : "none"}>
-                <CreateEspecial special={special} permisos={permisos}/>
-              </div>
-          }
+         {localuser.uid == "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2" && 
+         <>
+          {loading ? <></> :
+                <div id="create-especial" className={specialExist ? "" : "none"}>
+                  <CreateEspecial special={special} permisos={permisos}/>
+                </div>
+            }
+          </>
+        }
 
          {pendientes && 
               <div className="panel-tabla">
