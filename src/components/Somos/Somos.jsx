@@ -22,7 +22,6 @@ function Somos() {
 
             <p>Los y las invitamos a compartir nuestro mundo, nuestras ideas y nuestras inquietudes: a leer y a ser leídos, a escuchar y ser escuchados.</p>
 
-            <p>Subite a este colectivo de voces. La palabra ya está en marcha.</p>
         </div>
 
         <div className='somosCierre'>
