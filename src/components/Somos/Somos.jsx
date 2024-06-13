@@ -56,27 +56,14 @@ function Somos() {
         <p>María Luz Flores</p>
         <p>Sofía Petenello</p>
         <p>Priscila Brégoli</p>
-
-        <span>Equipo de redacción</span>
-        <p>Matias Valiero</p>
-        <p>Tiziana Esquivel</p>
-        <p>Lucio Ambrossio</p>
-        <p>Mateo Imberlina</p>
-        <p>Giuliano Giufridda</p>
-        <p>Victoria Jara</p>
-        <p>Nahiara Rojo</p>
-        <p>Morena Avedikián</p>
-
         
         <span>Coordinadores docentes</span>
         <p>Sebastián Gabriel Di Giorgio y Marianela Landini</p>
          
         <span>Colaboradores docentes</span>
-        <p>Juan Aladro y Paula Fernándezo</p>
+        <p>Juan Aladro y Paula Fernández</p>
 
-        <br/>
-        <h3>Revista cultural del Instituto Plácido Marín</h3>
-        <img src="/img/logoplacidochico.png" alt="" id="logoplacido"/>
+
 
 
 
