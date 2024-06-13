@@ -6,5 +6,5 @@ export const permisos = [   'GzX7WiiQKccRYawPF1PKb1XKMlz2',
                             'oT2XbpEwyyaSOEZloEKrMv5J2jn2',
                             'fEqyUn1whcPVJpUrEUQ9VQOWkep1',
                             'l7bGGeQjnJNqoaxhQ5cd9cJRAfW2',
-                            'hASr6TpB9jQRlzR6jIIAaRfN5am1',
+                            'hASr6TpB9jQRlzR6jIIAaRfN5am1'
                         ]
