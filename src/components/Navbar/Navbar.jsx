@@ -55,7 +55,7 @@ function Navbar() {
                     <li><Link to="/category/poesía">Poesía</Link></li>
                     <li><Link to="/category/miradas">Miradas</Link></li>
                     <li><Link to="/category/periodismo">Periodismo</Link></li>
-                    <li><Link to="/category/podcast">Podcast</Link></li>
+                    <li><Link to="/category/radio">Radio</Link></li>
                     <li><Link to="/category/altoviaje">Alto viaje</Link></li>
                     <li><Link to="/quienessomos">Qué es AltoBondi</Link></li>
                 </ul>

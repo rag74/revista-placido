@@ -12,24 +12,19 @@ import { useParams } from "react-router-dom";
 
 function ArticleListContainer() {
 
-    /*const {user} = useUserAuth();
-    console.log(user.email);
-    const history = useHistory()
-    {!user && history.push("/testing")}   */
+    const {colorCategoria} = useUserAuth();
 
     const {categoria} = useParams();
-
     const [articulos, setArticulos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [special, setSpecial] = useState();
-   
-/*    const location = useLocation();
+    const [colorCAT, setColorCat] = useState('#29d579')
 
-    useEffect(() => {
-      console.log('Location changed');
-    }, [location]);*/
   
+    ////BUSCAR ARTICULOS////
     useEffect(() => {
+
+      setLoading(true)
 
       async function getArticulos() {
           const arr = []
@@ -66,6 +61,14 @@ function ArticleListContainer() {
         getArticulos()  
       
   }, [categoria]);
+
+
+  ////SETEAR COLOR CATEGORIA////
+  useEffect(() => {
+
+    setColorCat(colorCategoria(categoria))
+
+  } , [categoria])
   
 
   console.log(articulos);
@@ -75,7 +78,7 @@ function ArticleListContainer() {
         <main>
             <div>
             {categoria!=null ?
-                <h1 className="tituloseccion"> {categoria.toLowerCase()} </h1> 
+                <h1 className="tituloseccion" style={{ backgroundColor: colorCAT }}> {categoria.toLowerCase()}</h1> 
                 : 
                 <>
                     <Carrusel articulos={articulos}

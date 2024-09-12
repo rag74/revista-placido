@@ -1,15 +1,20 @@
-import React, { useEffect , useRef } from "react";
+import React, { useEffect , useRef , useState} from "react";
 import ".//ArticleDetail.css";
 import Compartir from "../Compartir/Compartir";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import {useUserAuth} from '../../Context/UserAuthContext';
 
 
 function ArticleDetail({articulo}) {
 
     console.log(articulo);
 
+    /*const {colorCategoria} = useUserAuth();*/
+
     const componentRef = useRef();
+
+    const [colorCAT, setColorCat] = useState('#29d579')
 
     const linksCat = articulo.categories.map((cat)=>(
         <div key={cat} className="catLink">
@@ -57,12 +62,20 @@ function ArticleDetail({articulo}) {
       }
       }, []);
 
+/*
+//COLOR ETIQUETA CATEGORIA//
+useEffect(() => {
+
+  setColorCat(colorCategoria(articulo.categories))
+
+}, [articulo.maincategory])*/
+
 
     return(
       <>
        <section ref={componentRef}> 
             <div className="cabeceraArticulo">
-                <p className="mainCategory"><Link to={`/category/${articulo.maincategory}`}>{articulo.maincategory}</Link></p>
+                <p className="mainCategory" style={{ backgroundColor: colorCAT }}><Link to={`/category/${articulo.maincategory}`}>{articulo.maincategory}</Link></p>
                 <p className="volanta">{articulo.volanta}</p>
                 <hr className="divisor" />
                 <h1 className="title">{articulo.title}</h1>

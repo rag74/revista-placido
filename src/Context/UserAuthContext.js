@@ -238,6 +238,43 @@ useEffect(() => {
         }
     }
 
+    const colorCategoria = (categoria)=> {
+
+        switch (categoria) {
+            case "poesía":
+                return('#4C2882');
+                console.log("poesía")
+              break;
+            case "ficciones":
+                return('#1B5E20');
+                console.log("ficción")
+              break;
+            case "periodismo":
+                return('#fdcb5c');
+                console.log("periodismo")
+              break;
+            case "altoviaje":
+                return('#FF8000');
+                console.log("altoviaje")
+              break;
+            case "miradas":
+                return('#e21687');
+                console.log("miradas")
+              break;
+            case "radio":
+                return('#0F52BA');
+                console.log("podcast")
+              break;
+            
+            default:
+                return('#29d579');
+                console.log("default")
+              break;
+            }
+
+
+    }
+
     const value = useMemo(() => {
         return ({
             // poner const y func a pasar
@@ -254,6 +291,7 @@ useEffect(() => {
             revisarArticulo,
             publicarArticulo,
             checkAdmin,
+            colorCategoria,
             specialExist,
             permisos,
             admin,

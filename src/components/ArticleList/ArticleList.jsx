@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { useUserAuth } from '../../Context/UserAuthContext';
  
 
-function ArticleList ({articulos, loading,special}) {
+function ArticleList ({articulos, loading, special}) {
 
 const {categoria} = useParams();
 const {specialExist} = useUserAuth();
@@ -34,19 +34,37 @@ const loadMore = ()=> {
     return(
         
         <div className="contenedor">
-        {loading ?
+        {            
+            loading ?
             <div>
                 <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
                 <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
             </div>
              : 
-            articulos.length < 1 ? 
+
+
+            articulos.length < 1 && categoria != "radio"? 
                     <div className="catNotFound">
                         <div>Mmmm... no tenemos ese tipo de articulos...🤔</div>
                         <Link className="backHome" to="/"> 
                             <i id="homeicon" className="fas fa-home"></i>
                         </Link>
-                        </div> :
+                    </div> 
+                :
+
+                //RADIO RADIO RADIO BORRAR
+
+                            categoria === "radio" ?
+                            <>
+                            <div id="radioDiv">
+                            </div>
+                            <div className="radioH1">
+                                <h1>PRÓXIMAMENTE</h1> 
+                            </div>
+                            </>
+                            :
+                //RADIO RADIO RADIO BORRAR
+
             <div>
                 <div className="grilla-art">  
                 {
@@ -62,6 +80,7 @@ const loadMore = ()=> {
                                                     article={article}
                                                     maincategory={article.maincategory}
                                                     id={article.articleID}
+                                                    categoria={categoria}
                                                 />
                                         })
                     }

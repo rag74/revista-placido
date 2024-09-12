@@ -418,7 +418,7 @@ function uploadMain(e) {
                             <option value="poesía">poesía</option>
                             <option value="miradas">miradas</option>
                             <option value="periodismo">periodismo</option>
-                            <option value="podcast">podcast</option>
+                            <option value="radio">radio</option>
                             <option value="altoviaje">altoviaje</option>
                         </select>
                         <label htmlFor="titulo">Titulo:</label>
