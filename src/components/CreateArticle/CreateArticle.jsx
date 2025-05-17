@@ -48,7 +48,12 @@ function CreateArticle() {
     const [editormail, setEditormail] = useState('');
     const [fecha, setFecha] = useState('');
     const [carrousel, setCarrousel] = useState(false);
-    const [htmlcont, setHtmlcont] = useState(" ");
+    const [htmlcont, setHtmlcont] = useState(' ');
+
+    ///FORMATEO DE TEXTO PARA TINYMCE CUANDO RECIBE STRINGS//
+    /// Se reemplaza el salto de linea \n por <br> - Sin implementar///
+    const textoFormateado = htmlcont.replace(/\n/g, '<br>');
+    //////////////////////////////////////////////////////////
 
     ///VARIABLES SWITCH//
     const [checked, setChecked] = useState(false);
@@ -385,7 +390,6 @@ function uploadMain(e) {
         }
 
 
-    
   
     
     return (
@@ -564,7 +568,9 @@ function uploadMain(e) {
                         </div>
                         <img className='imagenArticulo' src={imagenprincipal640} width="100%" alt="" />
                         <div className='artText' id="artText">
+                            
                             {htmlcont && <div dangerouslySetInnerHTML={{__html: innerHtml}}></div>}
+
                         </div>
                         {title &&
                          <>                            

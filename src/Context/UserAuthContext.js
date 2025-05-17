@@ -65,8 +65,6 @@ useEffect(() => {
 
 
 
-
-
     const checkAdmin = () => {
         const localuser = JSON.parse(localStorage.getItem('localuser'));
         //if (localuser.uid === "l7bGGeQjnJNqoaxhQ5cd9cJRAfW2") 
@@ -263,7 +261,7 @@ useEffect(() => {
               break;
             case "radio":
                 return('#0F52BA');
-                console.log("podcast")
+                console.log("radio")
               break;
             
             default:
@@ -271,9 +269,38 @@ useEffect(() => {
                 console.log("default")
               break;
             }
-
-
     }
+
+
+    function esHoraVivo() {
+        // Obtenemos la fecha y hora actual del navegador
+        const fechaActual = new Date();
+      
+        // Convertir la fecha y hora a UTC-3 (horario de Argentina)
+        const offset = -3; // Ajusta este valor si el huso horario cambia
+        fechaActual.setHours(fechaActual.getHours());
+        
+      
+        // Extraemos los componentes de la fecha y hora
+        const dia = fechaActual.getDate();
+        console.log(dia)
+        const mes = fechaActual.getMonth() + 1; // Los meses en JavaScript empiezan desde 0
+        console.log(mes)
+        const hora = fechaActual.getHours();
+        console.log(hora)
+        const minutos = fechaActual.getMinutes();
+        console.log(minutos)
+      
+        // Comparamos si la fecha y hora están dentro del rango especificado
+        return (
+            (dia === 24 && mes === 10) ||
+            (dia === 31 && mes === 10) ||
+            (dia === 7 && mes === 11)
+          ) && (
+            (hora >= 13 && hora < 14 && minutos >= 30) ||
+            (hora >= 14 && hora < 15) 
+            )
+      }
 
     const value = useMemo(() => {
         return ({
@@ -292,6 +319,7 @@ useEffect(() => {
             publicarArticulo,
             checkAdmin,
             colorCategoria,
+            esHoraVivo,
             specialExist,
             permisos,
             admin,
