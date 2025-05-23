@@ -77,7 +77,7 @@ const Carousel = ({ children }) => {
         >
           <i class="fa-solid fa-chevron-right"></i>
         </div>
-      </div>
+      </div> 
 
       {/*//////// INDICADORES DE TRANSICION SLIDES */}
       <div className="indicatorsDots">

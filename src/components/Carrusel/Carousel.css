@@ -35,3 +35,11 @@
   display: flex;
   justify-content: center;
 }
+
+.indicatorsDots .active i {
+  color: #f0f8ff !important;
+}
+
+.indicatorsDots i {
+  transition: color 0.3s ease;
+}
