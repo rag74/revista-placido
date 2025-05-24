@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Editnavbar.css';
+/*import './Editnavbar.css';*/
 import { Link } from 'react-router-dom';
 import {useUserAuth} from '../../Context/UserAuthContext';
 import { useHistory } from "react-router-dom";
@@ -24,12 +24,13 @@ function Editnavbar() {
         }
         console.log(user)
       };
-    
+  
     const handleClick = () => {
         if (window.innerWidth < 1024) {
             setClick(!click)
         } else {setClick(false)}
     };
+
  
     const handleClickSub = () => {
             setClickSub(true);

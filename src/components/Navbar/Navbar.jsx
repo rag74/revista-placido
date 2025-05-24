@@ -1,6 +1,109 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useUserAuth } from '../../Context/UserAuthContext';
+import ReactGA from 'react-ga';
+
+const TRACKING_ID = "UA-242695198-1";
+ReactGA.initialize(TRACKING_ID);
+
+function Navbar() {
+    const location = useLocation();
+    const { esHoraVivo } = useUserAuth();
+    const EnVIVO = esHoraVivo();
+    const [click, setClick] = useState(false);
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }, [location]);
+
+    const handleClick = () => setClick(!click);
+
+    return(
+        <>
+            <header>
+
+                <div className="burger" onClick={handleClick}>
+                    <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+                </div>
+
+                <div className='marca'>
+                    <Link to="/">
+                        <img src="/img/altobondi-NVB.png" alt="altobondi" className='isotipo'/>
+                    </Link>
+                </div>
+
+                {EnVIVO &&
+                    <a href="https://www.youtube.com/@RadioInstitutoPlacidoMarin/live" target="_blank" rel="noreferrer">
+                        <div className='abso2'>
+                            <span className='parpadea vivo'>en vivo</span>
+                        </div>
+                    </a>
+                }
+                
+                {/* Nuevos iconos sociales */}
+                <div className="social-icons2">
+                    <a href="mailto:altobondi@placidomarin.edu.ar" target="_blank" rel="noreferrer">
+                        <i class="fa-regular fa-envelope icon"></i>
+                    </a>
+                    <a href="https://x.com/_altobondi_" target="_blank" rel="noreferrer">
+                        <i class="fa-brands fa-x-twitter icon"></i>
+                    </a>
+                    <a href="https://instagram.com/altobondi.revista" target="_blank" rel="noreferrer">
+                        <i class="fa-brands fa-instagram icon"></i>
+                    </a>
+                </div>
+
+                <nav className={click ? "menu fold" : "menu"}>
+                    <div className='rela'>
+                        <ul className="menunav" onClick={handleClick}>
+                            <li><Link to="/category/altoviaje">Alto viaje</Link></li>
+                            <li><Link to="/category/ficciones">Ficciones</Link></li>
+                            <li><Link to="/category/miradas">Miradas</Link></li>
+                            <li><Link to="/category/periodismo">Periodismo</Link></li>
+                            <li><Link to="/category/poesía">Poesía</Link></li>
+                            {EnVIVO ?
+                                <a href="https://www.youtube.com/@RadioInstitutoPlacidoMarin/live" target="_blank" rel="noreferrer">
+                                    <li>Streaming</li>
+                                    <div className='abso'>
+                                        <span className='parpadea vivo'>vivo</span>
+                                    </div>
+                                </a>
+                                : 
+                                <li><Link to="/category/radio">Radio</Link></li>
+                            }
+                            
+                            <li><Link to="/quienessomos">¿Quiénes somos?</Link></li>
+                            <li><Link to="/tesubis">¿Te subís?</Link></li>
+                            {/* Nuevos iconos sociales */}
+                            <div className="social-icons-menu">
+                                <a href="mailto:altobondi@placidomarin.edu.ar" target="_blank" rel="noreferrer">
+                                    <i class="fa-regular fa-envelope icon"></i>
+                                </a>
+                                <a href="https://x.com/_altobondi_" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-x-twitter icon"></i>
+                                </a>
+                                <a href="https://instagram.com/altobondi.revista" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-instagram icon"></i>
+                                </a>
+                            </div>
+                        </ul>
+                        
+                    </div>
+                </nav>
+
+            </header>
+        </>
+    );
+}
+
+export default Navbar;
+
+/*
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
+import { Link } from 'react-router-dom';
 import { useLocation, useHistory } from "react-router-dom";
 import {useUserAuth} from '../../Context/UserAuthContext';
 
@@ -68,7 +171,7 @@ function Navbar() {
             </div>
 
             
-            <nav className={click ? "menu fold" : "menu"} /*onClick={handleClick}*/>
+            <nav className={click ? "menu fold" : "menu"} >
                 <div className='rela'>
                     <ul className="menunav" onClick={handleClick}>
                         <li><Link to="/category/ficciones">Ficciones</Link></li>
@@ -102,3 +205,4 @@ function Navbar() {
 }
 
 export default Navbar
+*/

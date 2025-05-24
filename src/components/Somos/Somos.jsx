@@ -32,40 +32,42 @@ function Somos() {
     </section>
     <hr className='divisor'/>
     <section className='creditos'>
-        <h3>Equipo de trabajo ALTOBONDI 2024</h3>
+        <h3>Equipo de trabajodel proyecto comunicacional ALTOBONDI 2025</h3>
         
-        <span>Coordinadoras generales</span>
-        <p>Malena Cabrera y Tiziana Esquivel</p>
+        <span>Coordinadora general</span>
+        <p>Abril Angeleri</p>
+
+        <span>Responsables de la revista</span>
+        <p>Victoria García y Morella Rivero</p>
+
+        <span>Coordinadores por año</span>
+        <p>Tercer año: Lucas Cabrera y Daniela Vasquez</p>
+        <p>Cuarto año: Tobías Cabrera y Sofía Petenello</p>
+        <p>Quinto año: Victoria García y Morella Rivero</p>
+
+        <span>Responsables de la radio</span>
+        <p>Agustina Alegre y April Esquivel</p>
+
+        <span>Equipo técnico de la radio</span>
+        <p>Walter Golato</p>
+        <p>Valentina Guzmán</p>
+        <p>Valentino Vivacqua</p>
+        <p>Santino Larrea</p>
+        <p>Nahuel Rodriguez</p>
 
         <span>Diseño y redes sociales</span>
-        <p>Abril Angeleri</p>
-        <p>Micaela Ibarra</p>
-        <p>Julieta Fernández</p>
-        <p>Mateo Imberlina</p>
-        <p>Valentina Guzman</p>
+        <p>Camila Caminiti</p>
+        <p>Sebastián Ippólito</p>
+        <p>Alexia Ferrari</p>
 
-        <span>Responsables de sección y escritores</span>
-        <p>Sara Plencovich (Ficción)</p>
-        <p>Giuliano Giufridda (Poesía)</p>
-        <p>Nahiara Rojo (Alto viaje)</p>
-        <p>Bárbara Robledo (Periodismo)</p>
-        <p>Matías Valiero (Miradas)</p>
-        <p>Tobías Cabrera</p>
-        <p>Lucas Cabrera</p>
-        <p>Avril Araujo</p>
-        <p>María Luz Flores</p>
-        <p>Sofía Petenello</p>
-        <p>Priscila Brégoli</p>
+        <span>Coordinador docente de diseño y redes sociales</span>
+        <p>Juan Aladro</p>
         
-        <span>Coordinadores docentes</span>
-        <p>Sebastián Gabriel Di Giorgio y Marianela Landini</p>
+        <span>Coordinadores docentes de radio</span>
+        <p>Paula Fernández</p>
          
-        <span>Colaboradores docentes</span>
-        <p>Juan Aladro y Paula Fernández</p>
-
-
-
-
+        <span>Coordinadores docentes del proyecto</span>
+        <p>Marianela Landini y Sebastián Gabriel Di Giorgio</p>
 
     </section>
     </div>

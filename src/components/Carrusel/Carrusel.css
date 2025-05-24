@@ -6,7 +6,7 @@
 
 
 .carousel-item {
-    height: calc(100vh - 70px) !important;
+    height: calc(100vh - 140px) !important;
 }
 
 .indicators {

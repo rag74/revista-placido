@@ -81,6 +81,9 @@ function ArticleListContainer() {
                 <h1 className="tituloseccion" style={{ backgroundColor: colorCAT }}> {categoria.toLowerCase()}</h1> 
                 : 
                 <>
+                    <div className="destaqueCarrusel">
+                        <h1>DESTACADAS</h1>
+                    </div>
                     <Carrusel articulos={articulos}
                                 loading={loading}   
                     />
